@@ -1,0 +1,72 @@
+theme = "tokyonight"
+
+[editor]
+shell = ["powershell", "-Command"]
+cursorline = true
+true-color = true
+undercurl = true
+rulers = [100, 120]
+bufferline = "multiple"
+color-modes = true
+
+[editor.statusline]
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
+left = [
+  "mode",
+  "spinner",
+  "version-control",
+  "workspace-diagnostics",
+  "diagnostics",
+]
+center = [
+  "file-name",
+  "read-only-indicator",
+  "file-modification-indicator",
+]
+right = [
+  "register",
+  "selections",
+  "position-percentage",
+  "position",
+  "file-line-ending",
+  "file-encoding",
+  "file-type",
+]
+
+[editor.lsp]
+display-messages = true
+display-inlay-hints = true
+
+[editor.cursor-shape]
+normal = "block"
+insert = "bar"
+select = "underline"
+
+[editor.file-picker]
+hidden = false
+
+[editor.whitespace.render]
+space = "all"
+tab = "all"
+nbsp = "none"
+nnbsp = "none"
+newline = "none"
+
+# Key configration
+[keys.normal]
+x = "select_line_below"
+X = "select_line_above"
+A-x = "extend_to_line_bounds"
+
+[keys.select]
+x = "select_line_below"
+X = "select_line_above"
+A-x = "extend_to_line_bounds"
+j = { j = "normal_mode" }
+"C-c" = "normal_mode"
+
+[keys.insert]
+j = { j = "normal_mode" }
+"C-c" = "normal_mode"
