@@ -3,7 +3,7 @@ dotfiles for soramakura.
 
 ## Ubuntu
 ```
-curl https://raw.githubusercontent.com/soramakura/dotfiles/main/setup.sh | bash -xe
+curl https://raw.githubusercontent.com/soramakura/dotfiles/main/ubuntu_setup.sh | bash -xe
 ```
 
 ## Fonts
