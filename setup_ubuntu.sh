@@ -3,6 +3,7 @@
 readonly DOTFILES_REPO=https://github.com/soramakura/dotfiles.git
 
 cd ~
+echo $(pwd)
 echo "HOME dir ${HOME}"
 if [ -d dotfiles ] ; then
     echo "dotfiles is checked out already."
@@ -10,7 +11,6 @@ else
     git clone $DOTFILES_REPO
 fi
 cd dotfiles
-git pull --no-rebase $DOTFILES_REPO
 
 sudo apt update
 source ./scripts/ubuntu/setup_langc.sh
