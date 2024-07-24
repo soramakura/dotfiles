@@ -5,4 +5,4 @@ sudo apt install -y \
     make \
     clang \
     lldb \
-    lld \
+    lld

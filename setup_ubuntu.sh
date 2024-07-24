@@ -12,14 +12,12 @@ fi
 cd dotfiles
 git pull --no-rebase $DOTFILES_REPO
 
-unset DOTFILES_REPO
-
 sudo apt update
-./scripts/ubuntu/setup_langc.sh
-./scripts/ubuntu/setup_cmdtools.sh
-./scripts/ubuntu/setup_git.sh
-./scripts/ubuntu/setup_rust.sh
-./scripts/ubuntu/setup_helix.sh
+source ./scripts/ubuntu/setup_langc.sh
+source ./scripts/ubuntu/setup_cmdtools.sh
+source ./scripts/ubuntu/setup_git.sh
+source ./scripts/ubuntu/setup_rust.sh
+source ./scripts/ubuntu/setup_helix.sh
 
 if [ -d ~/.ssh ] && [ -f ~/.ssh/id_ed25519.pub ] ; then
     echo "id_ed25519.pub already exists"
