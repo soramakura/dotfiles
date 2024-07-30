@@ -1,0 +1,10 @@
+/*
+/.**
+
+!/helix
+!/helix/**
+
+!/setup_ubuntu.sh
+!/scripts/
+!/scripts/**
+!.gitignore
