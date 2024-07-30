@@ -3,6 +3,8 @@
 
 !/helix
 !/helix/**
+!/nvim
+!/nvim/**
 
 !/setup_ubuntu.sh
 !/scripts/
