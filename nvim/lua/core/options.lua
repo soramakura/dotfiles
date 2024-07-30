@@ -39,14 +39,13 @@ opt.title = true
 
 -- show line numbers
 opt.number = true
-opt.relativenumber = true
 
 -- show control characters
 opt.list = true
 opt.listchars = {
     tab = '»-',
     -- eol = '¬',
-    space = '･',
+    trail = '･',
     extends = '»',
     precedes = '«',
 }
@@ -64,5 +63,5 @@ opt.hidden = true
 opt.helplang = { 'ja', 'en' }
 opt.confirm = true
 opt.termguicolors = true
-opt.updatetime = 250
+opt.updatetime = 300
 
