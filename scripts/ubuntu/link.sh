@@ -7,5 +7,9 @@ echo $DOTFILES_DIR
 cd ${DOTFILES_DIR}
 
 # Helix
-mkdir -p ~/.config/helix
-ln -snf ${DOTFILES_DIR}/helix ~/.config/helix
+mkdir -p ~/.config
+ln -snf ${DOTFILES_DIR}/helix ~/.config/
+
+# Neovim
+mkdir -p ~/.config
+ln -snf ${DOTFILES_DIR}/nvim ~/.config/
