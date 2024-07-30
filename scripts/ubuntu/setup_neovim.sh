@@ -7,9 +7,17 @@ sudo ./nvim.appimage
 rm ./nvim.appimage
 
 # Install deno
-curl -fsSL https://deno.land/install.sh | sh
+sudo apt install unzip
+curl -fsSL https://deno.land/x/install/install.sh | sh
+
+echo 'export DENO_INSTALL="$HOME/.deno"' >> ~/.bashrc
+echo 'export PATH=$DENO_INSTALL/bin:$PATH' >> ~/.bashrc
+
+source ~/.bashrc
 
 # Install denops and dpp.vim
+DOTFILES_DIR=$(pwd)
+
 mkdir -p ~/.cache/dpp/repos/github.com/
 cd ~/.cache/dpp/repos/github.com
 
@@ -27,3 +35,5 @@ git clone https://github.com/Shougo/dpp-protocol-git
 
 cd ../vim-denops
 git clone https://github.com/vim-denops/denops.vim
+
+cd $DOTFILES_DIR
