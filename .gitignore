@@ -3,10 +3,8 @@
 
 !/helix
 !/helix/**
-!/nvim/
-!/nvim/init.lua
 !/nvim/dpp.ts
-!/nvim/lua/soramakura/**
+!/nvim/**/*.lua
 
 !/setup_ubuntu.sh
 !/scripts/
