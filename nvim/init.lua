@@ -1,0 +1,1 @@
+require("soramakura/core/options")
