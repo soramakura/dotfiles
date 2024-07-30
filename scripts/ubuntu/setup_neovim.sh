@@ -11,7 +11,7 @@ sudo apt install unzip
 curl -fsSL https://deno.land/x/install/install.sh | sh
 
 echo 'export DENO_INSTALL="$HOME/.deno"' >> ~/.bashrc
-echo 'export PATH=$DENO_INSTALL/bin:$PATH' >> ~/.bashrc
+echo 'export PATH="$DENO_INSTALL/bin:$PATH"' >> ~/.bashrc
 
 source ~/.bashrc
 
