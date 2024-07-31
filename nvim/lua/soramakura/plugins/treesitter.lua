@@ -1,5 +1,7 @@
 return {
   "nvim-treesitter/nvim-treesitter",
+  branch = "feat/version",
+  build = "<CMD>TSUpdate",
   event = "BufWinEnter",
   opts = {
     ensure_installed = {
@@ -14,7 +16,7 @@ return {
     },
   },
   config = function(_, opts)
-    require("nvim-treesitter.configs").setup(opts)
+    require("nvim-treesitter").setup(opts)
 
     -- MDX
     vim.filetype.add({

@@ -59,7 +59,7 @@ opt.listchars = {
   precedes = "«",
 }
 
-opt.laststatus = 2
+opt.laststatus = 3
 opt.cmdheight = 1
 opt.showcmd = true
 
