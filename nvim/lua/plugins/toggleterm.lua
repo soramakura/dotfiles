@@ -10,9 +10,7 @@ return {
         { "lg", "<CMD>lua _lazygit_toggle()<CR>", mode = "n" }
     },
     opts = {
-        size = 30,
         direction = "float",
-        autochdir = true,
     },
     config = function(_, opts)
         require("toggleterm").setup(opts)
@@ -20,10 +18,9 @@ return {
         local Terminal = require("toggleterm.terminal").Terminal
         local lazygit = Terminal:new({
             cmd = "lazygit",
-            direction = "tab",
+            direction = "float",
             hidden = true,
         })
-
         function _lazygit_toggle()
             lazygit:toggle()
         end
