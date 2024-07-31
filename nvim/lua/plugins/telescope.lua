@@ -11,11 +11,11 @@ return {
     keys = function()
         local builtin = require("telescope.builtin")
         return {
-            { "<leader>ff", builtin.find_files },
-            { "<leader>fg", builtin.live_grep },
-            { "<leader>fb", builtin.buffers },
-            { "<leader>fh", builtin.help_tags },
-            { "<leader>fb", "<CMD>Telescope file_browser path=%:p:h select_buffer=true<CR>" },
+            { "<leader>ff", builtin.find_files, mode = "n" },
+            { "<leader>fg", builtin.live_grep, mode = "n" },
+            { "<leader>fb", builtin.buffers, mode = "n" },
+            { "<leader>fh", builtin.help_tags, mode = "n" },
+            { "<leader>fb", "<CMD>Telescope file_browser path=%:p:h select_buffer=true<CR>", mode = "n" },
         }
     end,
     opts = {
