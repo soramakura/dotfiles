@@ -11,7 +11,7 @@ rm  ripgrep_14.1.0-1_amd64.deb
 # bat
 sudo apt install -y bat
 if [ -e ~/.local/bin/bat ] ; then
-  echo "fd already exists"
+  echo "bat already exists"
 else
   mkdir -p ~/.local/bin
   ln -s $(which batcat) ~/.local/bin/bat
