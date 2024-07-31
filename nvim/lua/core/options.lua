@@ -51,11 +51,11 @@ opt.relativenumber = true
 -- show control characters
 opt.list = true
 opt.listchars = {
-    tab = "»-",
-    -- eol = "¬",
-    space = "･",
-    extends = "»",
-    precedes = "«",
+  tab = "»-",
+  -- eol = "¬",
+  space = "･",
+  extends = "»",
+  precedes = "«",
 }
 
 opt.laststatus = 2
@@ -77,4 +77,3 @@ opt.timeoutlen = 300
 opt.helplang = { "ja", "en" }
 opt.confirm = true
 opt.termguicolors = true
-

@@ -1,7 +1,7 @@
 local set_keymap = vim.keymap.set
 
 local function opts(desc)
-    return { desc = desc, noremap = true, silent = true }
+  return { desc = desc, noremap = true, silent = true }
 end
 
 vim.g.mapleader = " "
@@ -56,5 +56,5 @@ set_keymap("n", "<leader>K", vim.lsp.buf.signature_help, opts("Show signature he
 
 set_keymap("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts("Add workspace folder"))
 set_keymap("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, opts("Remove workspace folder"))
-set_keymap("n", "<leader>wl", function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, opts("Print the list of workspace folder"))
-
+set_keymap("n", "<leader>wl", function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end,
+  opts("Print the list of workspace folder"))
