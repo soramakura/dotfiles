@@ -54,8 +54,6 @@ return {
             vim.lsp.protocol.make_client_capabilities()
           ),
         })
-        vim.opt.tabstop = 2
-        vim.opt.shiftwidth = 2
       end,
       ["rust_analyzer"] = function()
         require("lspconfig").rust_analyzer.setup({
