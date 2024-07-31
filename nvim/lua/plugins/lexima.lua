@@ -1,5 +1,5 @@
-return {{
-    'cohama/lexima.vim',
-    event = 'InsertEnter',
-}}
+return {
+    "cohama/lexima.vim",
+    event = "InsertEnter",
+}
 

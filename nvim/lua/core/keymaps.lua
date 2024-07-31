@@ -52,7 +52,7 @@ set_keymap("n", "ga", vim.lsp.buf.code_action, opts("Run code action"))
 set_keymap("n", "gf", vim.lsp.buf.format, opts("Format code"))
 
 set_keymap("n", "K", vim.lsp.buf.hover, opts("Show popup menu"))
--- set_keymap("n", "K", vim.lsp.buf.signature_help, opts("Show signature help"))
+set_keymap("n", "<leader>K", vim.lsp.buf.signature_help, opts("Show signature help"))
 
 set_keymap("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts("Add workspace folder"))
 set_keymap("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, opts("Remove workspace folder"))

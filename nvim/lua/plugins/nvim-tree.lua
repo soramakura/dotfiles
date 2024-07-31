@@ -1,10 +1,10 @@
-return {{
-    'nvim-tree/nvim-tree.lua',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-    event = { 'VimEnter' },
+return {
+    "nvim-tree/nvim-tree.lua",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    event = { "VimEnter" },
     opts = {
         sort = {
-            sorter = 'case_sensitive',
+            sorter = "case_sensitive",
         },
         view = {
             width = 30,
@@ -16,7 +16,7 @@ return {{
                 enable = false,
             },
             highlight_git = true,
-            highlight_opened_files = 'name',
+            highlight_opened_files = "name",
             icons = {
                 glyphs = {
                     git = {
@@ -40,18 +40,18 @@ return {{
         },
         filters = {
             dotfiles = false,
-            custom = { '.DS_Store' },
+            custom = { ".DS_Store" },
         },
         git = {
             ignore = false,
         },
     },
     config = function(_, opts)
-        require('nvim-tree').setup(opts)
+        require("nvim-tree").setup(opts)
 
-        require('nvim-tree.api').tree.toggle({ find_file = false, update_root = false, focus = false })
-        require('nvim-tree.api').tree.close()
+        require("nvim-tree.api").tree.toggle({ find_file = false, update_root = false, focus = false })
+        require("nvim-tree.api").tree.close()
 
-        vim.api.nvim_set_keymap('n', '<C-e>', '<CMD>NvimTreeToggle<CR>', { silent = true })
+        vim.api.nvim_set_keymap("n", "<C-e>", "<CMD>NvimTreeToggle<CR>", { silent = true })
     end,
-}}
+}

@@ -1,5 +1,5 @@
-return {{
-    'tpope/vim-commentary',
-    event = { 'BufEnter' },
-}}
+return {
+    "tpope/vim-commentary",
+    event = { "BufEnter" },
+}
 

@@ -1,5 +1,5 @@
-return {{
-    'tpope/vim-surround',
-    event = 'InsertEnter',
-}}
+return {
+    "tpope/vim-surround",
+    event = "InsertEnter",
+}
 
