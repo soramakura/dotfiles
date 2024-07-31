@@ -1,9 +1,9 @@
-return {{
-    'petertriho/nvim-scrollbar',
-    dependencies = { 'navarasu/onedark.nvim' },
-    event = { 'BufWinEnter' },
+return {
+    "petertriho/nvim-scrollbar",
+    dependencies = { "navarasu/onedark.nvim" },
+    event = { "BufWinEnter" },
     opts = function()
-        local colors = require('onedark.colors')
+        local colors = require("onedark.colors")
         return {
             handle = {
                 color = colors.bg_highlight,
@@ -19,7 +19,7 @@ return {{
         }
     end,
     config = function(_, opts)
-        require('scrollbar').setup(opts)
+        require("scrollbar").setup(opts)
     end,
-}}
+}
 

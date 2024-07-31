@@ -1,12 +1,12 @@
-return {{
-    'navarasu/onedark.nvim',
-    event = { 'VimEnter' },
+return {
+    "navarasu/onedark.nvim",
+    event = { "VimEnter" },
     opts = {
-        style = 'darker',
+        style = "darker",
     },
     config = function(_, opts)
-        require('onedark').setup(opts)
-        require('onedark').load()
+        require("onedark").setup(opts)
+        require("onedark").load()
     end,
-}}
+}
 

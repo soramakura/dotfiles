@@ -1,6 +1,6 @@
-return {{
-    'nvim-treesitter/nvim-treesitter',
-    event = 'BufWinEnter',
+return {
+    "nvim-treesitter/nvim-treesitter",
+    event = "BufWinEnter",
     opts = {
         ensure_installed = {
             "cmake",
@@ -24,5 +24,5 @@ return {{
         })
         vim.treesitter.language.register("markdown", "mdx");
     end,
-}}
+}
 
