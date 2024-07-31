@@ -1,6 +1,9 @@
 return {
   "nvim-tree/nvim-tree.lua",
   dependencies = { "nvim-tree/nvim-web-devicons" },
+  cond = function ()
+    return not vim.g.vscode
+  end,
   event = { "VimEnter" },
   opts = {
     sort = {
