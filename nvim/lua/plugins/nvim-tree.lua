@@ -50,7 +50,6 @@ return {
         require("nvim-tree").setup(opts)
 
         require("nvim-tree.api").tree.toggle({ find_file = false, update_root = false, focus = false })
-        require("nvim-tree.api").tree.close()
 
         vim.api.nvim_set_keymap("n", "<C-e>", "<CMD>NvimTreeToggle<CR>", { silent = true })
     end,
