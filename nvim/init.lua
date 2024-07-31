@@ -1,4 +1,4 @@
-require("core.options")
-require("core.keymaps")
-require("core.lazy")
+require("soramakura.core.options")
+require("soramakura.core.keymaps")
+require("soramakura.core.lazy")
 
