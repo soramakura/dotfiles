@@ -1,5 +1,11 @@
 local opt = vim.opt
 
+-- disable netrw
+vim.g.loaded_netrw = true
+vim.g.loaded_netrwPlugin = true
+vim.g.loaded_netrwSetings = true
+vim.g.loaded_netrwFileHandlers = true
+
 -- charset
 vim.scriptencoding = "utf-8"
 opt.encoding = "utf-8"
