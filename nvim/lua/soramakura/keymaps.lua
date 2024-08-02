@@ -9,16 +9,20 @@ vim.g.maplocalleader = " "
 
 -- back to normal mode quickly
 set_keymap("i", "jj", "<Esc>", opts("Go to normal mode quickly"))
+set_keymap("t", "<Esc><Esc>", "<C-\\><C-n>", opts("Go to normal mode quickly"))
 
 -- Intuitive Redo
 set_keymap("n", "U", "<C-r>", opts("Redo"))
+
+-- Disappear search text hilighting
+set_keymap("n", "<Esc><Esc>", ":noh", opts("Disappear search text hilighting"))
 
 -- Move by screen line
 set_keymap("n", "k", "gk", opts("Move up"))
 set_keymap("n", "j", "gj", opts("Move down"))
 set_keymap("n", "0", "g0", opts("Move to beginning of line"))
 set_keymap("n", "^", "g^", opts("Move to beginning of line without whitespaces"))
-set_keymap("n", "$", "g$55r", opts("Move to end of line"))
+set_keymap("n", "$", "g$", opts("Move to end of line"))
 
 -- Window splitting
 set_keymap("n", "<leader>sv", "<C-w>v", opts("Split window vertically"))
@@ -31,10 +35,10 @@ set_keymap("n", "<C-k>", "<C-w>k", opts("Move to top window"))
 set_keymap("n", "<C-l>", "<C-w>l", opts("Move to right window"))
 
 -- Tab deletion
-set_keymap("n", "<leader><Tab>n", ":tabnew<CR>", opts("Create new tab"))
-set_keymap("n", "<leader><Tab>d", ":bd<CR>", opts("Delete current tab"))
-set_keymap("n", "<leader><Tab>]", ":bnext<CR>", opts("Move to next tab"))
-set_keymap("n", "<leader><Tab>[", ":bprevious<CR>", opts("Move to previous tab"))
+set_keymap("n", "tn", ":tabnew<CR>", opts("Create new tab"))
+set_keymap("n", "td", ":bd<CR>", opts("Delete current tab"))
+set_keymap("n", "t]", ":bnext<CR>", opts("Move to next tab"))
+set_keymap("n", "t[", ":bprevious<CR>", opts("Move to previous tab"))
 
 -- LSP keymaps
 set_keymap("n", "gD", vim.lsp.buf.declaration, opts("Go to declaration"))
