@@ -9,7 +9,8 @@ curl https://raw.githubusercontent.com/soramakura/dotfiles/main/ubuntu_setup.sh 
 ## Fonts
 - https://github.com/yuru7/HackGen/releases
   - Install `HackGen_NF_v*.zip`
-- https://github.com/ryanoasis/nerd-fonts/releases/latest
-  - Install `Hack.zip`
 - https://github.com/adobe-fonts/source-han-sans/releases
   - Install `Language Specific OTFs Japanese`
+- https://github.com/adobe-fonts/source-han-serif/releases
+  - Install `Language Specifiex OTFs Japanese`
+
