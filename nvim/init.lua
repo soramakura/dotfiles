@@ -1,5 +1,5 @@
-require("soramakura.core.options")
-require("soramakura.core.keymaps")
-require("soramakura.core.autocmds")
-require("soramakura.core.lazy")
+require("soramakura.options")
+require("soramakura.keymaps")
+require("soramakura.autocmds")
+require("soramakura.lazy")
 
