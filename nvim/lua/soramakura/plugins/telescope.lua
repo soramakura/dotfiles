@@ -20,6 +20,7 @@ return {
   end,
   opts = {
     defaults = {
+      winblend = 4,
       file_ignore_patterns = {
         "^.git/",
         "^.cache/",
