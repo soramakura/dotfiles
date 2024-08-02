@@ -1,7 +1,7 @@
 return {
   "nvim-treesitter/nvim-treesitter",
-  branch = "feat/version",
-  build = "<CMD>TSUpdate",
+  branch = "main",
+  build = ":TSUpdate",
   event = "BufWinEnter",
   opts = {
     ensure_installed = {
