@@ -2,7 +2,7 @@ return {
   "navarasu/onedark.nvim",
   event = { "VimEnter" },
   opts = {
-    style = "darker",
+    style = "cool",
   },
   config = function(_, opts)
     require("onedark").setup(opts)

@@ -11,6 +11,9 @@ return {
   },
   opts = {
     direction = "float",
+    float_opts = {
+      winblend = 8
+    }
   },
   config = function(_, opts)
     require("toggleterm").setup(opts)
