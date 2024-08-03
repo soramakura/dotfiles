@@ -27,6 +27,7 @@ set_keymap("n", "$", "g$", opts("Move to end of line"))
 -- Window splitting
 set_keymap("n", "<leader>sv", "<C-w>v", opts("Split window vertically"))
 set_keymap("n", "<leader>sh", "<C-w>s", opts("Split window horizontally"))
+set_keymap("n", "<leader>sc", "<C-w>c", opts("Close window"))
 
 -- Move between windows
 set_keymap("n", "<C-h>", "<C-w>h", opts("Move to left window"))
@@ -34,11 +35,11 @@ set_keymap("n", "<C-j>", "<C-w>j", opts("Move to bottom window"))
 set_keymap("n", "<C-k>", "<C-w>k", opts("Move to top window"))
 set_keymap("n", "<C-l>", "<C-w>l", opts("Move to right window"))
 
--- Tab deletion
-set_keymap("n", "tn", ":tabnew<CR>", opts("Create new tab"))
-set_keymap("n", "td", ":bd<CR>", opts("Delete current tab"))
-set_keymap("n", "t]", ":bnext<CR>", opts("Move to next tab"))
-set_keymap("n", "t[", ":bprevious<CR>", opts("Move to previous tab"))
+-- Buffer control
+set_keymap("n", "<Tab>n", ":tabnew<CR>", opts("Create new tab"))
+set_keymap("n", "<Tab>d", ":bd<CR>", opts("Delete current tab"))
+set_keymap("n", "<Tab>]", ":bnext<CR>", opts("Move to next tab"))
+set_keymap("n", "<Tab>[", ":bprevious<CR>", opts("Move to previous tab"))
 
 -- LSP keymaps
 set_keymap("n", "gD", vim.lsp.buf.declaration, opts("Go to declaration"))
