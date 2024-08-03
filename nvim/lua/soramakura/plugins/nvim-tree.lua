@@ -1,6 +1,9 @@
 return {
   "nvim-tree/nvim-tree.lua",
-  dependencies = { "nvim-tree/nvim-web-devicons" },
+  dependencies = {
+    "nvim-tree/nvim-web-devicons",
+    "navarasu/onedark.nvim",
+  },
   cond = function ()
     return not vim.g.vscode
   end,
