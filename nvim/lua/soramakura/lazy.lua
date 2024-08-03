@@ -20,6 +20,10 @@ require("lazy").setup("soramakura/plugins", {
   performance = {
     rtp = {
       disabled_plugins = {
+        "netrw",
+        "netrwPlugin",
+        "netrwSettings",
+        "netrwFileHandlers",
       },
     },
   },
