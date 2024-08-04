@@ -51,20 +51,47 @@ return {
         ["<S-Tab>"] = cmp.mapping.select_prev_item(),
         ["<C-Space>"] = cmp.mapping.complete(),
       },
-      sorting = {
-        priority_weight = 1,
-        cmp.config.compare.offset,
-        cmp.config.compare.exact,
-        cmp.config.compare.score,
-        cmp.config.compare.recently_used,
-        cmp.config.compare.locality,
-        cmp.config.compare.kind,
-        cmp.config.compare.sort_text,
-        cmp.config.compare.length,
-        cmp.config.compare.order,
-      },
+      -- sorting = {
+      --   priority_weight = 1,
+      --   cmp.config.compare.offset,
+      --   cmp.config.compare.exact,
+      --   cmp.config.compare.score,
+      --   cmp.config.compare.recently_used,
+      --   cmp.config.compare.locality,
+      --   cmp.config.compare.kind,
+      --   cmp.config.compare.sort_text,
+      --   cmp.config.compare.length,
+      --   cmp.config.compare.order,
+      -- },
       formatting = {
         fields = { "abbr", "kind", "menu" },
+        format = function(entry, item)
+          local menu_icon = {
+            nvim_lsp = "NLSP",
+            nvim_lua = "NLUA",
+            luasnip  = "LSNP",
+            buffer   = "BUFF",
+            path     = "PATH",
+            crates   = "CRTS"
+          }
+          item.menu = menu_icon[entry.source.name]
+
+          local fixed_width = 50
+          local content = item.abbr
+          if fixed_width then
+            vim.o.pumwidth = fixed_width
+          end
+
+          local win_width = vim.api.nvim_win_get_width(0)
+          local max_content_width = fixed_width and fixed_width - 10 or math.floor(win_width * 0.2)
+
+          if #content > max_content_width then
+            item.abbr = vim.fn.strcharpart(content, 0, max_content_width - 3) .. "..."
+          else
+            item.abbr = content .. (" "):rep(max_content_width - #content)
+          end
+          return item
+        end,
       },
     }
   end,
