@@ -6,14 +6,16 @@ return {
     "TermExec",
   },
   keys = {
-    { "<leader>c", "<CMD>ToggleTerm<CR>",            mode = "n" },
-    { "lg",        "<CMD>lua _lazygit_toggle()<CR>", mode = "n" }
+    { "<leader>c",  "<CMD>ToggleTerm<CR>",            mode = "n" },
+    { "<leader>t",  "<CMD>ToggleTerm<CR>",            mode = "n" },
+    { "<leader>ss", "<CMD>ToggleTerm<CR>",            mode = "n" },
+    { "<leader>lg", "<CMD>lua _lazygit_toggle()<CR>", mode = "n" },
   },
   opts = {
     direction = "float",
     float_opts = {
-      winblend = 8
-    }
+      winblend = 8,
+    },
   },
   config = function(_, opts)
     require("toggleterm").setup(opts)
