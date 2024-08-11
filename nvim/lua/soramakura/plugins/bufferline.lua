@@ -7,8 +7,14 @@ return {
   event = { "BufEnter" },
 
   keys = {
-    { "<Tab>",   "<CMD>BufferLineCycleNext<CR>", mode = "n" },
-    { "<S-Tab>", "<CMD>BufferLineCyclePrev<CR>", mode = "n" },
+    { "<C-S-h>",    "<CMD>BufferLineMovePrev<CR>",  mode = "n" },
+    { "<C-S-l>",    "<CMD>BufferLineMoveNext<CR>",  mode = "n" },
+    { "<S-h>",      "<CMD>BufferLineCyclePrev<CR>", mode = "n" },
+    { "<S-l>",      "<CMD>BufferLineCycleNext<CR>", mode = "n" },
+    { "[b",         "<CMD>BufferLineCyclePrev<CR>", mode = "n" },
+    { "]b",         "<CMD>BufferLineCycleNext<CR>", mode = "n" },
+    { "<leader>bd", "<CMD>BufferLineClose<CR>",     mode = "n" },
+    { "<leader>bn", "<CMD>tabnew<CR>",              mode = "n" },
   },
   opts = {
     options = {
