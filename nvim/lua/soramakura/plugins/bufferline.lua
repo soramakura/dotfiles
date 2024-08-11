@@ -5,7 +5,6 @@ return {
     "navarasu/onedark.nvim",
   },
   event = { "BufEnter" },
-
   keys = {
     { "<C-S-h>",    "<CMD>BufferLineMovePrev<CR>",  mode = "n" },
     { "<C-S-l>",    "<CMD>BufferLineMoveNext<CR>",  mode = "n" },
