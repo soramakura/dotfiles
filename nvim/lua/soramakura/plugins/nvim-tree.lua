@@ -7,7 +7,12 @@ return {
   cond = function ()
     return not vim.g.vscode
   end,
-  event = { "VimEnter" },
+  cmd = {
+    "NvimTreeToggle",
+  },
+  keys = {
+    { "<leader>e", "<CMD>NvimTreeToggle<CR>", mode = "n" },
+  },
   opts = {
     sort = {
       sorter = "case_sensitive",
@@ -54,9 +59,5 @@ return {
   },
   config = function(_, opts)
     require("nvim-tree").setup(opts)
-
-    require("nvim-tree.api").tree.toggle({ find_file = false, update_root = false, focus = false })
-
-    vim.api.nvim_set_keymap("n", "<leader>e", "<CMD>NvimTreeToggle<CR>", { silent = true })
   end,
 }
