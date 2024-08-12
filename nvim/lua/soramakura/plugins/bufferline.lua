@@ -6,14 +6,12 @@ return {
   },
   event = { "BufEnter" },
   keys = {
-    { "<C-S-h>",    "<CMD>BufferLineMovePrev<CR>",  mode = "n" },
-    { "<C-S-l>",    "<CMD>BufferLineMoveNext<CR>",  mode = "n" },
-    { "<S-h>",      "<CMD>BufferLineCyclePrev<CR>", mode = "n" },
-    { "<S-l>",      "<CMD>BufferLineCycleNext<CR>", mode = "n" },
-    { "[b",         "<CMD>BufferLineCyclePrev<CR>", mode = "n" },
-    { "]b",         "<CMD>BufferLineCycleNext<CR>", mode = "n" },
-    { "<leader>bd", "<CMD>BufferLineClose<CR>",     mode = "n" },
-    { "<leader>bn", "<CMD>tabnew<CR>",              mode = "n" },
+    { "<leader>bp", "<CMD>BufferLineTogglePin<CR>",   mode = "n" },
+    { "<leader>bo", "<CMD>BufferLineCloseOthers<CR>", mode = "n" },
+    { "<leader>br", "<CMD>BufferLineCloseRight<CR>",  mode = "n" },
+    { "<leader>bl", "<CMD>BufferLineCloseLeft<CR>",   mode = "n" },
+    { "[B",         "<CMD>BufferLineMovePrev<cr>",    mode = "n" },
+    { "]B",         "<CMD>BufferLineMoveNext<cr>",    mode = "n" },
   },
   opts = {
     options = {
