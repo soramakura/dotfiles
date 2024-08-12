@@ -41,6 +41,29 @@ set_keymap("n", "<C-Down>", "<C-w>-", opts("Decrease window height"))
 set_keymap("n", "<C-Left>", "<C-w><", opts("Decrease window width"))
 set_keymap("n", "<C-Right>", "<C-w>>", opts("Increase window width"))
 
+-- Control buffers
+set_keymap("n", "<S-h>", "<CMD>bprevious<CR>", opts("Move to previous buffer"))
+set_keymap("n", "<S-l>", "<CMD>bnext<CR>", opts("Move to next buffer"))
+set_keymap("n", "[b", "<CMD>bprevious<CR>", opts("Move to previous buffer"))
+set_keymap("n", "]b", "<CMD>bnext<CR>", opts("Move to next buffer"))
+set_keymap("n", "<leader>b^", "<CMD>bfirst<CR>", opts("Move to first buffer"))
+set_keymap("n", "<leader>b$", "<CMD>blast<CR>", opts("Move to last buffer"))
+
+set_keymap("n", "<leader>bn", "<CMD>tabnew<CR><CMD>tabclose<CR><CMD>bnext<CR>", opts("Create new buffer"))
+set_keymap("n", "<leader>bd", "<CMD>bdelete<CR>", opts("Delete current buffer"))
+set_keymap("n", "<leader>bw", "<CMD>bwipeout<CR>", opts("Wipeout current buffer"))
+
+-- Control tabs
+set_keymap("n", "<leader><Tab>[", "<CMD>tabprevious<CR>", opts("Move to previous tab"))
+set_keymap("n", "<leader><Tab>]", "<CMD>tabnext<CR>", opts("Move to next tab"))
+set_keymap("n", "<leader><Tab>f", "<CMD>tabfirst<CR>", opts("Move to first tab"))
+set_keymap("n", "<leader><Tab>l", "<CMD>tablast<CR>", opts("Move to last tab"))
+
+set_keymap("n", "<leader><Tab><Tab>", "<CMD>tabnew<CR>", opts("Create new tab"))
+set_keymap("n", "<leader><Tab>n", "<CMD>tabnew<CR>", opts("Create new tab"))
+set_keymap("n", "<leader><Tab>d", "<CMD>tabclose<CR>", opts("Close current tab"))
+set_keymap("n", "<leader><Tab>o", "<CMD>tabonly<CR>", opts("Close other tabs"))
+
 -- LSP keymaps
 set_keymap("n", "gD", vim.lsp.buf.declaration, opts("Go to declaration"))
 set_keymap("n", "gd", vim.lsp.buf.definition, opts("Go to definition"))
