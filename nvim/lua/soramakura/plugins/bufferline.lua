@@ -24,23 +24,6 @@ return {
       show_clone_icon = true,
       color_icons = true,
     },
-    highlights = {
-      separator = {
-        fg = "#073642",
-        bg = "#000000",
-      },
-      background = {
-        fg = "#657b83",
-        bg = "#000000",
-      },
-      buffer_selected = {
-        fg = "#ffffff",
-        bg = "#000000",
-      },
-      fill = {
-        bg = "#073642",
-      },
-    }
   },
   config = function(_, opts)
     require("bufferline").setup(opts)
