@@ -38,6 +38,8 @@ return {
         documentation = cmp.config.window.bordered(),
       },
       mapping = {
+        ["<C-u>"] = cmp.mapping.scroll_docs(-2),
+        ["<C-d>"] = cmp.mapping.scroll_docs(2),
         ["<C-b>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
         ["<CR>"] = cmp.mapping.confirm({ select = true }),
@@ -51,18 +53,6 @@ return {
         ["<S-Tab>"] = cmp.mapping.select_prev_item(),
         ["<C-Space>"] = cmp.mapping.complete(),
       },
-      -- sorting = {
-      --   priority_weight = 1,
-      --   cmp.config.compare.offset,
-      --   cmp.config.compare.exact,
-      --   cmp.config.compare.score,
-      --   cmp.config.compare.recently_used,
-      --   cmp.config.compare.locality,
-      --   cmp.config.compare.kind,
-      --   cmp.config.compare.sort_text,
-      --   cmp.config.compare.length,
-      --   cmp.config.compare.order,
-      -- },
       formatting = {
         fields = { "abbr", "kind", "menu" },
         format = function(entry, item)
@@ -70,9 +60,9 @@ return {
             nvim_lsp = "NLSP",
             nvim_lua = "NLUA",
             luasnip  = "LSNP",
-            buffer   = "BUFF",
             path     = "PATH",
-            crates   = "CRTS"
+            crates   = "CRTS",
+            buffer   = "BUFF",
           }
           item.menu = menu_icon[entry.source.name]
 

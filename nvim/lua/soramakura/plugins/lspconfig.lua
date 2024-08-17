@@ -21,7 +21,12 @@ return {
       end,
     },
   },
-  cmd = { "LspInfo", "LspInstall", "LspStart" },
+  cmd = {
+    "LspInfo",
+    "LspInstall",
+    "LspStart",
+    "LspRestart",
+  },
   event = { "BufReadPre", "BufNewFile" },
   config = function(_, _)
     require("mason-lspconfig").setup({
