@@ -26,21 +26,8 @@ return {
       indent_markers = {
         enable = false,
       },
-      highlight_git = true,
-      highlight_opened_files = "name",
-      icons = {
-        glyphs = {
-          git = {
-            unstaged = "!",
-            renamed = "»",
-            untracked = "?",
-            deleted = "✘",
-            staged = "✓",
-            unmerged = "",
-            ignored = "◌",
-          },
-        },
-      },
+      highlight_git = "name",
+      highlight_opened_files = "icon",
     },
     actions = {
       open_file = {
