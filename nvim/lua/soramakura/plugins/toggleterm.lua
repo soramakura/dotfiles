@@ -13,6 +13,7 @@ return {
     { "<leader>lg", "<CMD>lua _lazygit_toggle()<CR>", mode = "n" },
   },
   opts = {
+    persist_mode = false,
     direction = "float",
     float_opts = {
       winblend = 8,
