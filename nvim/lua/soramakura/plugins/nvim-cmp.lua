@@ -27,10 +27,10 @@ return {
       },
       sources = {
         { name = "nvim_lsp" },
-        { name = "nvim_lua" },
-        { name = "path" },
         { name = "buffer" },
+        { name = "path" },
         { name = "luasnip" },
+        { name = "nvim_lua" },
         { name = "crates" }
       },
       window = {
@@ -58,11 +58,12 @@ return {
         format = function(entry, item)
           local menu_icon = {
             nvim_lsp = "NLSP",
-            nvim_lua = "NLUA",
-            luasnip  = "LSNP",
-            path     = "PATH",
-            crates   = "CRTS",
             buffer   = "BUFF",
+            path     = "PATH",
+            cmdline  = "CMDL",
+            luasnip  = "LSNP",
+            nvim_lua = "NLUA",
+            crates   = "CRTS",
           }
           item.menu = menu_icon[entry.source.name]
 
