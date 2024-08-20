@@ -1,4 +1,4 @@
 return {
-  "tpope/vim-surround",
+  "machakann/vim-sandwich",
   event = "InsertEnter",
 }
