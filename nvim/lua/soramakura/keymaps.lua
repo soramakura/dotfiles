@@ -70,7 +70,7 @@ set_keymap("n", "gt", vim.lsp.buf.type_definition, opts("Go to type definition")
 set_keymap("n", "gi", vim.lsp.buf.implementation, opts("Go to implementation"))
 set_keymap("n", "gr", vim.lsp.buf.references, opts("Go to references"))
 
-set_keymap("", "ge", vim.diagnostic.open_float, opts("Show errors on float window"))
+set_keymap("n", "ge", vim.diagnostic.open_float, opts("Show errors on float window"))
 set_keymap("n", "g]", vim.diagnostic.goto_next, opts("Go to next error"))
 set_keymap("n", "g[", vim.diagnostic.goto_prev, opts("Go to prev error"))
 set_keymap("n", "]d", vim.diagnostic.goto_next, opts("Go to next error"))
