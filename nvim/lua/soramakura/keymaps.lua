@@ -9,7 +9,6 @@ vim.g.maplocalleader = " "
 
 -- back to normal mode quickly
 set_keymap("i", "jj", "<Esc>", opts("Go to normal mode quickly"))
-set_keymap("t", "<Esc><Esc>", "<C-\\><C-n>", opts("Go to normal mode quickly"))
 
 -- Intuitive Redo
 set_keymap("n", "U", "<C-r>", opts("Redo"))

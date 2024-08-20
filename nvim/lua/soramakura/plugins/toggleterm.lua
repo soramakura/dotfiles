@@ -6,6 +6,7 @@ return {
     "TermExec",
   },
   keys = {
+    { "<Esc><Esc>", "<C-\\><C-n>",                    mode = "t" },
     { "<leader>c",  "<CMD>ToggleTerm<CR>",            mode = "n" },
     { "<leader>t",  "<CMD>ToggleTerm<CR>",            mode = "n" },
     { "<leader>ss", "<CMD>ToggleTerm<CR>",            mode = "n" },
