@@ -18,6 +18,7 @@ return {
     },
     persist_mode = false,
     direction = "float",
+    shell = vim.o.shell,
     float_opts = {
       winblend = 8,
     },
