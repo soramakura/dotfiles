@@ -6,6 +6,7 @@ opt.encoding = "utf-8"
 opt.fileencodings = { "utf-8", "ucs-bom", "cp932", "default" }
 opt.fileencoding = "utf-8"
 opt.autoread = true
+opt.fileformats = { "unix", "dos", "mac" }
 
 -- prevent full-width characters from being drawn with the width of half-width characters
 opt.ambiwidth = "double"
