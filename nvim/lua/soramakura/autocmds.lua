@@ -1,3 +1,4 @@
+-- Change indentation depending on FileType
 local filetype_tabstop = {
   lua = 2,
   markdown = 2,
@@ -7,7 +8,6 @@ local filetype_tabstop = {
 }
 
 local usrftcfg = vim.api.nvim_create_augroup("UserFileTypeConfig", { clear = true })
-
 vim.api.nvim_create_autocmd("FileType", {
   group = usrftcfg,
   callback = function(args)
@@ -24,3 +24,21 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+-- Clear registers on startup
+vim.g.alpha_lower = "abcdefghijklmnopqrstuvwxyz"
+vim.g.alpha_upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+vim.g.digits = "0123456789"
+vim.g.alpha_all = vim.g.alpha_lower .. vim.g.alpha_upper
+vim.g.alnum = vim.g.alpha_all .. vim.g.digits
+
+local function clear_registers()
+  vim.cmd([[
+    for r in split(g:alnum .. '/', '\zs')
+      call setreg(r, [])
+    endfor
+  ]])
+end
+vim.api.nvim_create_user_command("ClearRegisters", clear_registers, {})
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = clear_registers,
+})
