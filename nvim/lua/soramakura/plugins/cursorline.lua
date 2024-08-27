@@ -3,9 +3,7 @@ return {
   event = { "BufReadPre", "BufNewFile" },
   opts = {
     cursorline = {
-      enable = true,
-      timeout = 0,
-      number = false,
+      enable = false
     },
     cursorword = {
       enable = true,
