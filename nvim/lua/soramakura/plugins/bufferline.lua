@@ -20,9 +20,17 @@ return {
   opts = {
     options = {
       separator_style = "thick",
+      offsets = {
+        {
+          filetype = "NvimTree",
+          text = "File Explorer",
+          text_align = "center",
+          separator = true,
+        },
+      },
+      color_icons = true,
       show_buffer_clone_icons = true,
       show_clone_icon = true,
-      color_icons = true,
     },
   },
   config = function(_, opts)
