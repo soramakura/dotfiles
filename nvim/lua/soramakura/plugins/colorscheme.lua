@@ -3,10 +3,6 @@ return {
   event = { "VimEnter" },
   opts = {
     style = "cool",
-    transparent = true,
-    lualine = {
-      transparent = true,
-    }
   },
   config = function(_, opts)
     require("onedark").setup(opts)
