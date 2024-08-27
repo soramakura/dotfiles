@@ -4,7 +4,7 @@ return {
   opts = {
     cursorline = {
       enable = true,
-      timeout = 1000,
+      timeout = 0,
       number = false,
     },
     cursorword = {
