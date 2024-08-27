@@ -32,6 +32,11 @@ return {
       show_buffer_clone_icons = true,
       show_clone_icon = true,
     },
+    highlights = {
+      fill = {
+        bg = "#151820",
+      },
+    },
   },
   config = function(_, opts)
     require("bufferline").setup(opts)
