@@ -1,10 +1,15 @@
 -- Change indentation depending on FileType
 local filetype_tabstop = {
+  c = 4,
+  cpp = 4,
+  css = 2,
+  html = 2,
+  javascript = 2,
+  typescript = 2,
+  svelte = 2,
   lua = 2,
   markdown = 2,
   rust = 4,
-  cpp = 4,
-  c = 4,
 }
 
 local usrftcfg = vim.api.nvim_create_augroup("UserFileTypeConfig", { clear = true })
