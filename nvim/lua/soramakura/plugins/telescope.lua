@@ -3,10 +3,6 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-telescope/telescope-file-browser.nvim",
-    {
-      "nvim-telescope/telescope-fzf-native.nvim",
-      build = "make",
-    },
   },
   keys = function()
     local builtin = require("telescope.builtin")
@@ -15,7 +11,6 @@ return {
       { "<leader>fg", builtin.live_grep,                                               mode = "n" },
       { "<leader>fb", builtin.buffers,                                                 mode = "n" },
       { "<leader>fh", builtin.help_tags,                                               mode = "n" },
-      { "<leader>fb", "<CMD>Telescope file_browser path=%:p:h select_buffer=true<CR>", mode = "n" },
     }
   end,
   opts = {
@@ -63,6 +58,5 @@ return {
     require("telescope").setup(opts)
 
     require("telescope").load_extension("file_browser")
-    require("telescope").load_extension("fzf")
   end,
 }
