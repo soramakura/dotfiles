@@ -1,9 +1,5 @@
 return {
   "akinsho/bufferline.nvim",
-  dependencies = {
-    "nvim-tree/nvim-web-devicons",
-    "catppuccin/nvim",
-  },
   event = { "BufEnter" },
   keys = {
     { "<S-h>",      "<CMD>BufferLineCyclePrev<CR>",   mode = "n" },

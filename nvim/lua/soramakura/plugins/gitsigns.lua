@@ -1,6 +1,5 @@
 return {
   "lewis6991/gitsigns.nvim",
-  dependencies = { "petertriho/nvim-scrollbar" },
   event = { "BufReadPre", "BufNewFile" },
   cond = function()
     return not vim.g.vscode
@@ -17,6 +16,5 @@ return {
   },
   config = function()
     require("gitsigns").setup()
-    require("scrollbar.handlers.gitsigns").setup()
   end,
 }

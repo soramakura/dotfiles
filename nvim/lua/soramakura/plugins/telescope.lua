@@ -1,9 +1,19 @@
 return {
-  "nvim-telescope/telescope.nvim",
-  dependencies = {
+  {
     "nvim-lua/plenary.nvim",
-    "nvim-telescope/telescope-file-browser.nvim",
+    keys = {
+      { "<leader>f", mode = "n" }
+    }
   },
+  {
+    "nvim-telescope/telescope-file-browser.nvim",
+    keys = {
+      { "<leader>f", mode = "n" },
+    },
+  },
+  {
+
+  "nvim-telescope/telescope.nvim",
   keys = function()
     local builtin = require("telescope.builtin")
     return {
@@ -59,4 +69,5 @@ return {
 
     require("telescope").load_extension("file_browser")
   end,
+},
 }
