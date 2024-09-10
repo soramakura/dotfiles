@@ -12,9 +12,9 @@ local filetype_tabstop = {
   rust = 4,
 }
 
-local usrftcfg = vim.api.nvim_create_augroup("UserFileTypeConfig", { clear = true })
+local user_filetype_config = vim.api.nvim_create_augroup("UserFileTypeConfig", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
-  group = usrftcfg,
+  group = user_filetype_config,
   callback = function(args)
     local ftts = filetype_tabstop[args.match]
     if ftts then
@@ -46,4 +46,11 @@ end
 vim.api.nvim_create_user_command("ClearRegisters", clear_registers, {})
 vim.api.nvim_create_autocmd("VimEnter", {
   callback = clear_registers,
+})
+
+-- Exit toggleterm shell when Neovim exits
+vim.api.nvim_create_autocmd("VimLeavePre", {
+  callback = function(_)
+    vim.cmd([[TermExec cmd="exit"]])
+  end,
 })
