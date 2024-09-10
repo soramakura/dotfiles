@@ -13,3 +13,7 @@ ln -snf ${DOTFILES_DIR}/helix ~/.config/
 # Neovim
 mkdir -p ~/.config
 ln -snf ${DOTFILES_DIR}/nvim ~/.config/
+
+# tmux
+mkdir -p ~/.config
+ln -snf ${DOTFILES_DIR}/tmux ~/.config/
