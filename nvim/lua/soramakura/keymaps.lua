@@ -41,8 +41,6 @@ set_keymap("n", "<C-Left>", "<C-w><", opts("Decrease window width"))
 set_keymap("n", "<C-Right>", "<C-w>>", opts("Increase window width"))
 
 -- Control buffers
-set_keymap("n", "<S-h>", "<CMD>bprevious<CR>", opts("Move to previous buffer"))
-set_keymap("n", "<S-l>", "<CMD>bnext<CR>", opts("Move to next buffer"))
 set_keymap("n", "[b", "<CMD>bprevious<CR>", opts("Move to previous buffer"))
 set_keymap("n", "]b", "<CMD>bnext<CR>", opts("Move to next buffer"))
 set_keymap("n", "<leader>b^", "<CMD>bfirst<CR>", opts("Move to first buffer"))

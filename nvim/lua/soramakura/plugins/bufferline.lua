@@ -2,8 +2,6 @@ return {
   "akinsho/bufferline.nvim",
   event = { "BufEnter" },
   keys = {
-    { "<S-h>",      "<CMD>BufferLineCyclePrev<CR>",   mode = "n" },
-    { "<S-l>",      "<CMD>BufferLineCycleNext<CR>",   mode = "n" },
     { "[b",         "<CMD>BufferLineCyclePrev<CR>",   mode = "n" },
     { "]b",         "<CMD>BufferLineCycleNext<CR>",   mode = "n" },
     { "[B",         "<CMD>BufferLineMovePrev<CR>",    mode = "n" },
