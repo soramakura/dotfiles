@@ -1,21 +1,8 @@
 return {
   {
     "nvim-lua/plenary.nvim",
-    keys = {
-      { "<leader>f", mode = "n" },
-    },
-  },
-  {
     "nvim-telescope/telescope-file-browser.nvim",
-    keys = {
-      { "<leader>f", mode = "n" },
-    },
-  },
-  {
     "nvim-telescope/telescope-ui-select.nvim",
-    keys = {
-      { "<leader>f", mode = "n" },
-    },
   },
   {
 
