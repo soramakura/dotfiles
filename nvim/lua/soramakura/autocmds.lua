@@ -47,10 +47,3 @@ vim.api.nvim_create_user_command("ClearRegisters", clear_registers, {})
 vim.api.nvim_create_autocmd("VimEnter", {
   callback = clear_registers,
 })
-
--- Exit toggleterm shell when Neovim exits
-vim.api.nvim_create_autocmd("VimLeavePre", {
-  callback = function(_)
-    vim.cmd([[TermExec cmd="exit"]])
-  end,
-})
