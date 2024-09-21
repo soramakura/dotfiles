@@ -64,7 +64,7 @@ set_keymap("n", "<leader><Tab>o", "<CMD>tabonly<CR>", opts("Close other tabs"))
 -- LSP keymaps
 set_keymap("n", "gD", vim.lsp.buf.declaration, opts("Go to declaration"))
 set_keymap("n", "gd", vim.lsp.buf.definition, opts("Go to definition"))
-set_keymap("n", "gt", vim.lsp.buf.type_definition, opts("Go to type definition"))
+set_keymap("n", "gy", vim.lsp.buf.type_definition, opts("Go to type definition"))
 set_keymap("n", "gi", vim.lsp.buf.implementation, opts("Go to implementation"))
 set_keymap("n", "gr", vim.lsp.buf.references, opts("Go to references"))
 
