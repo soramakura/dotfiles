@@ -6,6 +6,9 @@ echo $UBUNTU_SCRIPTS_DIR
 echo $DOTFILES_DIR
 cd ${DOTFILES_DIR}
 
+# Git
+ln -snf ${DOTFILES_DIR}/git/.gitconfig ~/
+
 # Helix
 mkdir -p ~/.config
 ln -snf ${DOTFILES_DIR}/helix ~/.config/
