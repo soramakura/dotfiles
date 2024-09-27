@@ -3,6 +3,10 @@ return {
     "nvim-lua/plenary.nvim",
     "nvim-telescope/telescope-file-browser.nvim",
     "nvim-telescope/telescope-ui-select.nvim",
+    {
+      "nvim-telescope/telescope-fzf-native.nvim",
+      build = "make",
+    },
   },
   {
     "nvim-telescope/telescope.nvim",
@@ -72,6 +76,7 @@ return {
 
       require("telescope").load_extension("file_browser")
       require("telescope").load_extension("ui-select")
+      require("telescope").load_extension("fzf")
     end,
   },
 }
