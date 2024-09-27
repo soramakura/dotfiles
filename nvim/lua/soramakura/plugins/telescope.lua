@@ -5,7 +5,6 @@ return {
     "nvim-telescope/telescope-ui-select.nvim",
   },
   {
-
     "nvim-telescope/telescope.nvim",
     keys = function()
       local builtin = require("telescope.builtin")
