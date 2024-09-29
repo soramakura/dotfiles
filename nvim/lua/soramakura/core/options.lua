@@ -39,3 +39,7 @@ vim.opt.wrapscan = true
 
 -- use sysmtem clipboard as default register
 vim.opt.clipboard:append("unnamedplus")
+
+-- use mouse
+vim.opt.mouse = "a"
+vim.opt.title = true
