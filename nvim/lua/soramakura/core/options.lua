@@ -86,3 +86,6 @@ vim.opt.updatetime = 250
 -- set timeout
 vim.opt.timeout = true
 vim.opt.timeoutlen = 300
+
+-- enable Japanese help
+vim.opt.helplang = { "ja", "en" }
