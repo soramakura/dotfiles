@@ -17,9 +17,6 @@ vim.opt.hidden = true
 vim.opt.number = true
 vim.opt.relativenumber = true
 
--- show column to display sign
-vim.opt.signcolumn = "yes"
-
 -- tab and indentation
 vim.opt.autoindent = true
 vim.opt.smartindent = true
@@ -49,17 +46,40 @@ vim.opt.wrapscan = true
 -- use sysmtem clipboard as default register
 vim.opt.clipboard:append("unnamedplus")
 
+-- backspace
+vim.opt.backspace = "indent,eol,start"
+
 -- use mouse
 vim.opt.mouse = "a"
 vim.opt.title = true
+
+-- show column to display sign
+vim.opt.signcolumn = "yes"
+
+-- enable cursorline
+vim.opt.cursorline = true
+
+-- turn on termguicolors for beautiful colorscheme to work
+vim.opt.termguicolors = true
 
 -- status line
 vim.opt.laststatus = 3
 vim.opt.cmdheight = 1
 vim.opt.showcmd = true
 
+-- split windows
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+
 -- prevent creation of swap files
 vim.opt.swapfile = false
 
 -- save undo history
 vim.opt.undofile = true
+
+-- set update time
+vim.opt.updatetime = 250
+
+-- set timeout
+vim.opt.timeout = true
+vim.opt.timeoutlen = 300
