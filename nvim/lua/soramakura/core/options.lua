@@ -60,3 +60,6 @@ vim.opt.showcmd = true
 
 -- prevent creation of swap files
 vim.opt.swapfile = false
+
+-- save undo history
+vim.opt.undofile = true
