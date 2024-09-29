@@ -1,7 +1,7 @@
 -- charset
 vim.scriptencoding = "utf-8"
 vim.opt.encoding = "utf-8"
-vim.opt.fileencodings = "utf-8"
+vim.opt.fileencoding = "utf-8"
 vim.opt.fileencodings = { "utf-8", "ucs-bom", "cp932", "default" }
 
 -- prevent full-width characters from being drawn with the width of half-width characters
@@ -66,6 +66,9 @@ vim.opt.termguicolors = true
 vim.opt.laststatus = 3
 vim.opt.cmdheight = 1
 vim.opt.showcmd = true
+
+-- allow to choose whether to save the buffer when exiting
+vim.opt.confirm = true
 
 -- split windows
 vim.opt.splitright = true
