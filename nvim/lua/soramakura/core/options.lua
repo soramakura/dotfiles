@@ -11,6 +11,9 @@ vim.opt.ambiwidth = "double"
 vim.opt.number = true
 vim.opt.relativenumber = true
 
+-- show column to display sign
+vim.opt.signcolumn = "yes"
+
 -- tab and indentation
 vim.opt.autoindent = true
 vim.opt.smartindent = true
