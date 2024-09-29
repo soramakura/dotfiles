@@ -23,6 +23,9 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
+-- disable line wrapping
+vim.opt.wrap = false
+
 -- enable syntax highlighting
 vim.opt.syntax = "yes"
 
