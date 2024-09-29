@@ -23,6 +23,11 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
+-- enable syntax highlighting
+vim.opt.syntax = "yes"
+
 -- highlight matching brackets
 vim.opt.showmatch = true
 vim.opt.matchtime = 1
+
+
