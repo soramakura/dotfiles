@@ -44,7 +44,7 @@ vim.opt.incsearch = true
 vim.opt.wrapscan = true
 
 -- use sysmtem clipboard as default register
-vim.opt.clipboard:append("unnamedplus")
+-- vim.opt.clipboard:append("unnamedplus")
 
 -- backspace
 vim.opt.backspace = "indent,eol,start"
@@ -63,6 +63,7 @@ vim.opt.cursorline = true
 vim.opt.list = true
 vim.opt.listchars = {
   tab = "»-",
+  -- eol = "¬",
   space = "･",
   extends = "»",
   precedes = "«",
@@ -99,7 +100,7 @@ vim.opt.timeoutlen = 300
 -- enable Japanese help
 vim.opt.helplang = { "ja", "en" }
 
--- When running on Windows, change the shell from cmd.exe to powershell
+-- When running on Windows, change the shell from cmd.ese to powershell
 vim.opt.termguicolors = true
 if vim.loop.os_uname().sysname == "Windows_NT" then
   local pwsh_options = {
