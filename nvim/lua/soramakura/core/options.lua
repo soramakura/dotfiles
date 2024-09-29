@@ -46,3 +46,8 @@ vim.opt.clipboard:append("unnamedplus")
 -- use mouse
 vim.opt.mouse = "a"
 vim.opt.title = true
+
+-- status line
+vim.opt.laststatus = 3
+vim.opt.cmdheight = 1
+vim.opt.showcmd = true
