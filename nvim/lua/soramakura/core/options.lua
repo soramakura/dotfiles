@@ -59,6 +59,16 @@ vim.opt.signcolumn = "yes"
 -- enable cursorline
 vim.opt.cursorline = true
 
+-- show control characters
+vim.opt.list = true
+vim.opt.listchars = {
+  tab = "»-",
+  -- eol = "¬",
+  space = "･",
+  extends = "»",
+  precedes = "«",
+}
+
 -- turn on termguicolors for beautiful colorscheme to work
 vim.opt.termguicolors = true
 
