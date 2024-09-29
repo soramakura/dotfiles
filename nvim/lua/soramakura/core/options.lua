@@ -30,4 +30,9 @@ vim.opt.syntax = "yes"
 vim.opt.showmatch = true
 vim.opt.matchtime = 1
 
-
+-- searching settings
+vim.opt.hlsearch = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.incsearch = true
+vim.opt.wrapscan = true
