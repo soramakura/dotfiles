@@ -36,3 +36,6 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.incsearch = true
 vim.opt.wrapscan = true
+
+-- use sysmtem clipboard as default register
+vim.opt.clipboard:append("unnamedplus")
