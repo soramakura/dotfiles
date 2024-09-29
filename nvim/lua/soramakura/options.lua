@@ -8,9 +8,6 @@ opt.fileencoding = "utf-8"
 opt.autoread = true
 opt.fileformats = { "unix", "dos", "mac" }
 
--- prevent full-width characters from being drawn with the width of half-width characters
-opt.ambiwidth = "double"
-
 -- indent settings
 opt.autoindent = true
 opt.smartindent = true
