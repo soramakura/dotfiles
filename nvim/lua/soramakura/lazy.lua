@@ -1,22 +1,32 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
-  vim.fn.system({
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local out = vim.fn.system({
     "git",
     "clone",
     "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
     "--branch=stable",
-    lazypath,
+    lazyrepo,
+    lazypath
   })
+  if vim.v.shell_error ~= 0 then
+    error("Error cloning lazy.nvim:\n" .. out)
+  end
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup("soramakura/plugins", {
-  defaults = {
+require("lazy").setup({ { import  = "soramakura.plugins" } }, {
+  default = {
     lazy = true,
     version = false,
   },
-  checker = { enabled = true },
+  checker = {
+    enabled = true,
+    notify = false,
+  },
+  change_detection = {
+    notify = false,
+  },
   performance = {
     rtp = {
       disabled_plugins = {

@@ -1,15 +1,15 @@
--- Change indentation depending on FileType
+-- change indentation depending on FileType
 local filetype_tabstop = {
   c = 4,
   cpp = 4,
   css = 2,
   html = 2,
   javascript = 2,
-  typescript = 2,
-  svelte = 2,
   lua = 2,
   markdown = 2,
   rust = 4,
+  svelte = 2,
+  typescript = 2,
 }
 
 local user_filetype_config = vim.api.nvim_create_augroup("UserFileTypeConfig", { clear = true })
@@ -29,7 +29,7 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
--- Clear registers on startup
+-- clear registers on startup
 vim.g.alpha_lower = "abcdefghijklmnopqrstuvwxyz"
 vim.g.alpha_upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 vim.g.digits = "0123456789"
