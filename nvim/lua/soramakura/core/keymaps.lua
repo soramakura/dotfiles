@@ -27,7 +27,7 @@ set_keymap("n", "$", "g$", opts("Move to end of line"))
 set_keymap("n", "<leader>wv", "<C-w>v", opts("Split window vertically"))
 set_keymap("n", "<leader>wh", "<C-w>s", opts("Split window horizontally"))
 set_keymap("n", "<leader>wc", "<C-w>c", opts("Close window"))
-set_keymap("n", "<leader>wc", "<C-w>=", opts("Close window"))
+set_keymap("n", "<leader>we", "<C-w>=", opts("Make windows the same size"))
 
 -- move between windows
 set_keymap("n", "<C-j>", "<C-w>j", opts("Move to bottom window"))
@@ -68,15 +68,15 @@ set_keymap("n", "gy", vim.lsp.buf.type_definition, opts("Go to type definition")
 set_keymap("n", "gi", vim.lsp.buf.implementation, opts("Go to implementation"))
 set_keymap("n", "gr", vim.lsp.buf.references, opts("Go to references"))
 
-set_keymap("n", "ge", vim.diagnostic.open_float, opts("Show errors on float window"))
+set_keymap("n", "<leader>D", vim.diagnostic.open_float, opts("Show errors on float window"))
 set_keymap("n", "g]", vim.diagnostic.goto_next, opts("Go to next error"))
 set_keymap("n", "g[", vim.diagnostic.goto_prev, opts("Go to prev error"))
 set_keymap("n", "]d", vim.diagnostic.goto_next, opts("Go to next error"))
 set_keymap("n", "[d", vim.diagnostic.goto_prev, opts("Go to prev error"))
 
-set_keymap("n", "gr", vim.lsp.buf.rename, opts("Rename the symbol"))
-set_keymap("n", "ga", vim.lsp.buf.code_action, opts("Run code action"))
-set_keymap("n", "gf", vim.lsp.buf.format, opts("Format code"))
+set_keymap("n", "<leader>rn", vim.lsp.buf.rename, opts("Rename the symbol"))
+set_keymap("n", "<leader>ca", vim.lsp.buf.code_action, opts("Run code action"))
+set_keymap("n", "<leader>cf", vim.lsp.buf.format, opts("Format code"))
 
 set_keymap("n", "K", vim.lsp.buf.hover, opts("Show popup menu"))
 set_keymap("n", "<leader>k", vim.lsp.buf.signature_help, opts("Show signature help"))
