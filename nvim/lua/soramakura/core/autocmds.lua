@@ -29,7 +29,7 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
--- Clear registers on startup
+-- clear registers on startup
 vim.g.alpha_lower = "abcdefghijklmnopqrstuvwxyz"
 vim.g.alpha_upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 vim.g.digits = "0123456789"

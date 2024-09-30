@@ -27,6 +27,7 @@ set_keymap("n", "$", "g$", opts("Move to end of line"))
 set_keymap("n", "<leader>wv", "<C-w>v", opts("Split window vertically"))
 set_keymap("n", "<leader>wh", "<C-w>s", opts("Split window horizontally"))
 set_keymap("n", "<leader>wc", "<C-w>c", opts("Close window"))
+set_keymap("n", "<leader>wd", "<C-w>c", opts("Close window"))
 set_keymap("n", "<leader>we", "<C-w>=", opts("Make windows the same size"))
 
 -- move between windows
