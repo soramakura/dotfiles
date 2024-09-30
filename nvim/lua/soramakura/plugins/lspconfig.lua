@@ -2,7 +2,7 @@ local set_lsp_keymaps = function()
   local set_keymap = vim.keymap.set
   local opts = function(desc)
     return { desc = desc, noremap = true, silent = true }
-  end
+ end
 
   local builtin = require("telescope.builtin")
   set_keymap("n", "gd", builtin.lsp_definitions, opts("Go to definition"))
@@ -75,7 +75,7 @@ return {
       "williamboman/mason.nvim",
       {
         "j-hui/fidget.nvim",
-        opts = {}
+        opts = {},
       },
       "hrsh7th/cmp-nvim-lsp",
     },
@@ -117,8 +117,8 @@ return {
           })
         end,
       })
-    end,
 
-    set_lsp_keymaps()
+      set_lsp_keymaps()
+    end,
   },
 }
