@@ -21,7 +21,12 @@ return {
       operators = {},
     },
     integrations = {
+      gitsignes = true,
+      treesitter = true,
       markdown = true,
+      telescope = {
+        enabled = true,
+      },
     },
   },
   config = function(_, opts)
