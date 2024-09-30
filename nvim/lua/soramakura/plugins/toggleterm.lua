@@ -6,22 +6,14 @@ return {
     "TermExec",
   },
   keys = {
-    { "<A-t>",      "<CMD>ToggleTerm<CR>",            mode = "n" },
-    { "<A-s>",      "<CMD>ToggleTerm<CR>",            mode = "n" },
-    { "<Esc><Esc>", "<C-\\><C-n>",                    mode = "t" },
-    { "<leader>lg", "<CMD>lua _lazygit_toggle()<CR>", mode = "n" },
+    { "<A-s>",      "<CMD>ToggleTerm<CR>",          mode = "n" },
+    { "<leader>lg", "<CMD>lua ToggleLazygit()<CR>", mode = "n" },
   },
   opts = {
-    open_mapping = {
-      "<A-t>",
-      "<A-s>",
-    },
-    persist_mode = false,
-    direction = "float",
+    open_mapping = { "<A-s>" },
+    presist_mode = false,
+    diretion = "float",
     shell = vim.o.shell,
-    float_opts = {
-      winblend = 8,
-    },
   },
   config = function(_, opts)
     require("toggleterm").setup(opts)
@@ -32,7 +24,8 @@ return {
       direction = "float",
       hidden = true,
     })
-    function _lazygit_toggle()
+
+    function ToggleLazygit()
       lazygit:toggle()
     end
   end,

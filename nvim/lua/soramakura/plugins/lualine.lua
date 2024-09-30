@@ -1,6 +1,9 @@
 return {
   "nvim-lualine/lualine.nvim",
-  event = { "VimEnter" },
+  event = { "VeryLazy" },
+  dependencies = {
+    "nvim-tree/nvim-web-devicons",
+  },
   opts = {
     options = {
       theme = "catppuccin",
@@ -8,7 +11,4 @@ return {
       section_separators = { left = "", right = "" },
     },
   },
-  config = function(_, opts)
-    require("lualine").setup(opts)
-  end,
 }

@@ -1,41 +1,24 @@
 return {
   "nvim-treesitter/nvim-treesitter",
-  branch = "main",
+  event = { "BufReadPre", "BufNewFile" },
   build = ":TSUpdate",
-  event = "BufWinEnter",
+  main = "nvim-treesitter.configs",
   opts = {
     ensure_installed = {
-      "bash",
       "c",
-      "diff",
-      "gitignore",
-      "html",
       "lua",
-      "luadoc",
-      "markdown",
-      "markdown_inline",
-      "query",
       "vim",
       "vimdoc",
-      "cmake",
-      "cpp",
-      "rust",
+      "query",
+      "markdown",
+      "markdown_inline",
     },
-    autoinstall = true,
+    auto_install = true,
     highlight = {
-      enbale = true,
-      additional_vim_regex_highlightint = false,
+      enable = true,
+    },
+    indent = {
+      enable = true,
     },
   },
-  config = function(_, opts)
-    require("nvim-treesitter").setup(opts)
-
-    -- MDX
-    vim.filetype.add({
-      extension = {
-        mdx = "mdx",
-      },
-    })
-    vim.treesitter.language.register("markdown", "mdx");
-  end,
 }
