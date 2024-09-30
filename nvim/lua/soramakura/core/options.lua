@@ -113,3 +113,7 @@ if vim.loop.os_uname().sysname == "Windows_NT" then
     vim.opt[k] = v
   end
 end
+
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+  border = "rounded",
+})
