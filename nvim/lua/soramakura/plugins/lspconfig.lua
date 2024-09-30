@@ -26,6 +26,13 @@ return {
   },
   "Bilal2453/luvit-meta",
   {
+    "rust-lang/rust.vim",
+    ft = { "rust" },
+    init = function()
+      vim.g.rustfmt_autosave = true
+    end,
+  },
+  {
     "williamboman/mason.nvim",
     event = { "VeryLazy" },
     dependencies = {
