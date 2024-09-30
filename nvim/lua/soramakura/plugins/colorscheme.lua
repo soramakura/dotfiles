@@ -21,9 +21,11 @@ return {
       operators = {},
     },
     integrations = {
-      gitsignes = true,
+      gitsigns = true,
       treesitter = true,
       markdown = true,
+      mason = true,
+      cmp = true,
       telescope = {
         enabled = true,
       },

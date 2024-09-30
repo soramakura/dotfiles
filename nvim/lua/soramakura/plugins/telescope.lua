@@ -55,7 +55,7 @@ return {
     set_keymap("n", "<leader>sk", builtin.keymaps, keymap_opts("Search keymaps"))
     set_keymap("n", "<leader>st", builtin.filetypes, keymap_opts("Search file types"))
     set_keymap("n", "<leader>sh", builtin.help_tags, keymap_opts("Search help"))
-    set_keymap("n", "<leader>sd", builtin.diagnostics, keymap_opts("Search diagnostics"))
+    set_keymap("n", "<leader>ss", builtin.treesitter, keymap_opts("Search symbols"))
     set_keymap("n", "<leader>e", open_file_browser, keymap_opts("Open file browser"))
   end,
 }
