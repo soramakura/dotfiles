@@ -31,7 +31,7 @@ vim.opt.syntax = "yes"
 
 -- highlight matching brackets
 vim.opt.showmatch = true
-vim.opt.matchtime = 1
+vim.opt.matchtime = 0
 
 -- searching settings
 vim.opt.hlsearch = true
