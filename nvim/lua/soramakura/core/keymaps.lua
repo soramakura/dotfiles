@@ -76,7 +76,7 @@ set_keymap("n", "[d", vim.diagnostic.goto_prev, opts("Go to prev error"))
 
 set_keymap("n", "<leader>rn", vim.lsp.buf.rename, opts("Rename the symbol"))
 set_keymap("n", "<leader>ca", vim.lsp.buf.code_action, opts("Run code action"))
-set_keymap("n", "<leader>cf", vim.lsp.buf.format, opts("Format code"))
+set_keymap("n", "<leader>f", vim.lsp.buf.format, opts("Format code"))
 
 set_keymap("n", "K", vim.lsp.buf.hover, opts("Show popup menu"))
 set_keymap("n", "<leader>k", vim.lsp.buf.signature_help, opts("Show signature help"))
