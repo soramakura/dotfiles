@@ -22,7 +22,6 @@ return {
     },
     integrations = {
       gitsigns = true,
-      treesitter = true,
       markdown = true,
       mason = true,
       cmp = true,
@@ -46,6 +45,8 @@ return {
           background = true,
         },
       },
+      nvim_surround = true,
+      treesitter = true,
       telescope = {
         enabled = true,
       },
