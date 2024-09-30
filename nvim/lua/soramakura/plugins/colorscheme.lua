@@ -20,7 +20,9 @@ return {
       types = {},
       operators = {},
     },
-    integrations = {},
+    integrations = {
+      markdown = true,
+    },
   },
   config = function(_, opts)
     require("catppuccin").setup(opts)
