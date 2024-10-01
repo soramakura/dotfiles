@@ -114,6 +114,34 @@ if vim.loop.os_uname().sysname == "Windows_NT" then
   end
 end
 
+-- add frame to the hover window
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
   border = "rounded",
 })
+
+-- prevent full-width characters from being drawn with the width of half-width characters
+vim.opt.ambiwidth = "double"
+-- prevent layout collapse caused by `ambiwidth="double"`
+local cellwidths = vim.fn.getcellwidths()
+table.insert(cellwidths, { 0x2600, 0x26ff, 1 })
+table.insert(cellwidths, { 0xe5fa, 0xe6ac, 1 })
+table.insert(cellwidths, { 0xe700, 0xe7c5, 1 })
+table.insert(cellwidths, { 0xf000, 0xf2e0, 1 })
+table.insert(cellwidths, { 0xe200, 0xe2a9, 1 })
+table.insert(cellwidths, { 0xf0001, 0xf1af0, 1 })
+table.insert(cellwidths, { 0xe300, 0xe3e3, 1 })
+table.insert(cellwidths, { 0xf400, 0xf532, 1 })
+table.insert(cellwidths, { 0xe0a0, 0xe0a2, 1 })
+table.insert(cellwidths, { 0xe0b0, 0xe0b3, 1 })
+table.insert(cellwidths, { 0xe0a3, 0xe0a3, 1 })
+table.insert(cellwidths, { 0xe0b4, 0xe0c8, 1 })
+table.insert(cellwidths, { 0xe0ca, 0xe0ca, 1 })
+table.insert(cellwidths, { 0xe0cc, 0xe0d4, 1 })
+table.insert(cellwidths, { 0x23fb, 0x23fe, 1 })
+table.insert(cellwidths, { 0x2b58, 0x2b58, 1 })
+table.insert(cellwidths, { 0xf300, 0xf32f, 1 })
+table.insert(cellwidths, { 0xe000, 0xe00a, 1 })
+table.insert(cellwidths, { 0xea60, 0xebeb, 1 })
+table.insert(cellwidths, { 0x276c, 0x2771, 1 })
+table.insert(cellwidths, { 0x2500, 0x259f, 1 })
+vim.fn.setcellwidths(cellwidths)
