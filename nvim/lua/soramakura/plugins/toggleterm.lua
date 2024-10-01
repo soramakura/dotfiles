@@ -12,7 +12,7 @@ return {
   opts = {
     open_mapping = { "<A-s>" },
     presist_mode = false,
-    diretion = "float",
+    direction = "float",
     shell = vim.o.shell,
   },
   config = function(_, opts)
