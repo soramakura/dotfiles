@@ -5,20 +5,19 @@ local set_telescope_keymaps = function()
   end
 
   local builtin = require("telescope.builtin")
-  local open_file_browser = function()
-    require("telescope").extensions.file_browser.file_browser()
-  end
 
-  set_keymap("n", "<leader><leader>", builtin.buffers, keymap_opts("Search buffers"))
-  set_keymap("n", "<leader>sb", builtin.buffers, keymap_opts("Search buffers"))
-  set_keymap("n", "<leader>sf", builtin.find_files, keymap_opts("Search files"))
+  set_keymap("n", "<leader>sf", function ()
+    builtin.find_files({ follow = true, hidden = true, no_ignore = true })
+  end, keymap_opts("Search files"))
   set_keymap("n", "<leader>sg", builtin.live_grep, keymap_opts("Search files by grep"))
   set_keymap("n", "<leader>sr", builtin.registers, keymap_opts("Search registers"))
   set_keymap("n", "<leader>sk", builtin.keymaps, keymap_opts("Search keymaps"))
   set_keymap("n", "<leader>st", builtin.filetypes, keymap_opts("Search file types"))
   set_keymap("n", "<leader>sh", builtin.help_tags, keymap_opts("Search help"))
   set_keymap("n", "<leader>ss", builtin.treesitter, keymap_opts("Search symbols"))
-  set_keymap("n", "<leader>e", open_file_browser, keymap_opts("Open file browser"))
+  set_keymap("n", "<leader>e", function()
+    require("telescope").extensions.file_browser.file_browser()
+  end, keymap_opts("Open file browser"))
 end
 
 return {
@@ -39,6 +38,22 @@ return {
   },
   config = function(_, _)
     require("telescope").setup({
+      defaults = {
+        file_ignore_patterns = {
+          "^.git/",
+        },
+        vimgrep_arguments = {
+          "rg",
+          "--color=never",
+          "--no-heading",
+          "--with-filename",
+          "--line-number",
+          "--column",
+          "--smart-case",
+          "--hidden",
+          "--no-ignore",
+        },
+      },
       extensions = {
         fzf = {
           fuzzy = true,
@@ -50,7 +65,12 @@ return {
           require("telescope.themes").get_dropdown({})
         },
         file_browser = {
+          hidden = {
+            file_browser = true,
+            folder_browser = true,
+          },
           respect_gitignore = false,
+          no_ignore = true,
           follow_symlinks = true,
           hijack_netrw = true,
         },
