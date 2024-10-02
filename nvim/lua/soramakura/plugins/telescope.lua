@@ -6,6 +6,8 @@ local set_telescope_keymaps = function()
 
   local builtin = require("telescope.builtin")
 
+  set_keymap("n", "<leader><leader>", builtin.buffers, keymap_opts("Search buffers"))
+  set_keymap("n", "<leader>sb", builtin.buffers, keymap_opts("Search buffers"))
   set_keymap("n", "<leader>sf", function ()
     builtin.find_files({ follow = true, hidden = true, no_ignore = true })
   end, keymap_opts("Search files"))
