@@ -55,7 +55,7 @@ return {
       formatting = {
         fields = { "abbr", "kind", "menu" },
         format = lspkind.cmp_format({
-          max_width = function()
+          maxwidth = function()
             return math.floor(0.45 * vim.o.columns)
           end,
           ellipsis_char = "...",
