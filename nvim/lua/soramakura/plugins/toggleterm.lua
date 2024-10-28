@@ -6,7 +6,7 @@ return {
     "TermExec",
   },
   keys = {
-    { "<A-s>",      "<CMD>ToggleTerm<CR>",          mode = "n" },
+    -- { "<A-s>",      "<CMD>ToggleTerm<CR>",          mode = "n" },
     { "<leader>lg", "<CMD>lua ToggleLazygit()<CR>", mode = "n" },
   },
   opts = {
