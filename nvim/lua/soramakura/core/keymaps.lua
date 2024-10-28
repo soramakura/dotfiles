@@ -11,7 +11,7 @@ set_keymap("i", "jj", "<Esc>", opts("Exit normal mode quickly"))
 set_keymap("t", "<Esc><Esc>", "<C-\\><C-n>", opts("Exit terminal mode quickly"))
 
 -- toggle terminal buffer
-set_keymap("n", "<A-s>", "<CMD>ToggleTermBuf", opts("Toggle terminal buffer"))
+set_keymap("n", "<A-s>", "<CMD>ToggleTermBuf<CR>", opts("Toggle terminal buffer"))
 
 -- intuitive Redo
 set_keymap("n", "U", "<C-r>", opts("Redo"))
