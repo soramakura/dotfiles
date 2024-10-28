@@ -51,7 +51,7 @@ set_keymap("n", "]b", "<CMD>bnext<CR>", opts("Move to next buffer"))
 set_keymap("n", "<leader>b^", "<CMD>bfirst<CR>", opts("Move to first buffer"))
 set_keymap("n", "<leader>b$", "<CMD>blast<CR>", opts("Move to last buffer"))
 
-set_keymap("n", "<leader>bn", "<CMD>tabnew<CR><CMD>tabclose<CR><CMD>bnext<CR>", opts("Create new buffer"))
+set_keymap("n", "<leader>bn", "<CMD>enew<CR>", opts("Create new buffer"))
 set_keymap("n", "<leader>bd", "<CMD>bdelete<CR>", opts("Delete current buffer"))
 set_keymap("n", "<leader>bw", "<CMD>bwipeout<CR>", opts("Wipeout current buffer"))
 
