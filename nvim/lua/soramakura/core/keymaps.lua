@@ -11,13 +11,13 @@ set_keymap("i", "jj", "<Esc>", opts("Exit normal mode quickly"))
 set_keymap("t", "<Esc><Esc>", "<C-\\><C-n>", opts("Exit terminal mode quickly"))
 
 -- toggle terminal buffer
-set_keymap("n", "<A-s>", "<CMD>ToggleTermBuf<CR>", opts("Toggle terminal buffer"))
+set_keymap({ "n", "t", "v" }, "<A-s>", "<CMD>ToggleTermBuf<CR>", opts("Toggle terminal buffer"))
 
 -- intuitive Redo
 set_keymap("n", "U", "<C-r>", opts("Redo"))
 
 -- disappear search text highlighting
-set_keymap("n", "<Esc>", "<CMD>nohlsearch<CR>", opts("Disappear search text highlighting"))
+set_keymap("n", "<Esc><Esc>", "<CMD>nohlsearch<CR>", opts("Disappear search text highlighting"))
 
 -- move by screen line
 set_keymap("n", "k", "gk", opts("Move up"))
