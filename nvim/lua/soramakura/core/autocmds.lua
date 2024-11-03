@@ -31,15 +31,15 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- toggle terminal buffer
 local toggle_terminal_buffer = function()
-  -- Returns whether the buffer is a terminal buffer
+  --- Returns whether the buffer is a terminal buffer
   local is_terminal_buffer = function(buffer)
     local name = vim.api.nvim_buf_get_name(buffer)
-    return name:find("term://", 1, true) ~= nil
+    return vim.startswith(name, "term://")
   end
 
-  -- Finds the terminal buffer and return its handle
-  --
-  -- Returns nil if no terminal buffer is open
+  --- Finds the terminal buffer and return its handle
+  ---
+  --- Returns nil if no terminal buffer is open
   local find_terminal_buffer = function()
     for _, buffer in ipairs(vim.api.nvim_list_bufs()) do
       if is_terminal_buffer(buffer) then
@@ -49,10 +49,13 @@ local toggle_terminal_buffer = function()
     return nil
   end
 
-  -- Opens the terminal buffer
-  --
-  -- Creates a new terminal buffer if not terminal buffer is open
+  --- Opens the terminal buffer
+  ---
+  --- Creates a new terminal buffer if not terminal buffer is open
   local open_terminal_buffer = function()
+    -- Save previous buffer
+    vim.g.previously_focused_buffer = vim.api.nvim_get_current_buf()
+
     local term_buf = find_terminal_buffer()
     if term_buf == nil then
       -- create a new terminal buffer
@@ -66,14 +69,14 @@ local toggle_terminal_buffer = function()
     vim.api.nvim_command("startinsert")
   end
 
-  -- Switches to the previously opened buffer
-  local switch_to_previous_buffer = function()
-    vim.api.nvim_set_current_buf(1)
+  --- Switches to the previously focused buffer
+  local switch_to_previously_focused_buffer = function()
+    vim.api.nvim_set_current_buf(vim.g.previously_focused_buffer)
   end
 
   local current_buffer = vim.api.nvim_get_current_buf()
   if is_terminal_buffer(current_buffer) then
-    switch_to_previous_buffer()
+    switch_to_previously_focused_buffer()
   else
     open_terminal_buffer()
   end
