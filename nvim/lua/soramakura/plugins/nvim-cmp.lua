@@ -55,10 +55,16 @@ return {
       formatting = {
         fields = { "abbr", "kind", "menu" },
         format = lspkind.cmp_format({
-          maxwidth = function()
-            return math.floor(0.45 * vim.o.columns)
-          end,
+          maxwidth = {
+            menu = function()
+              return math.floor(0.45 * vim.o.columns)
+            end,
+            abbr = function()
+              return math.floor(0.45 * vim.o.columns)
+            end,
+          },
           ellipsis_char = "...",
+          show_labelDetails = true,
         }),
       },
     }
@@ -70,7 +76,7 @@ return {
     cmp.setup.cmdline("/", {
       mapping = cmp.mapping.preset.cmdline(),
       source = {
-        { name = "buffer"},
+        { name = "buffer" },
       },
     })
 
