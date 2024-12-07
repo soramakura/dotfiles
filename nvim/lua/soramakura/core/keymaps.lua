@@ -11,7 +11,7 @@ set_keymap("i", "jj", "<Esc>", opts("Exit normal mode quickly"))
 set_keymap("t", "<Esc><Esc>", "<C-\\><C-n>", opts("Exit terminal mode quickly"))
 
 -- toggle terminal buffer
-set_keymap({ "n", "t", "v" }, "<A-s>", "<CMD>ToggleTermBuf<CR>", opts("Toggle terminal buffer"))
+set_keymap({ "n", "t", "v" }, "<M-s>", "<CMD>ToggleTermBuf<CR>", opts("Toggle terminal buffer"))
 
 -- intuitive Redo
 set_keymap("n", "U", "<C-r>", opts("Redo"))
@@ -38,6 +38,14 @@ set_keymap("n", "<C-j>", "<C-w>j", opts("Move to bottom window"))
 set_keymap("n", "<C-k>", "<C-w>k", opts("Move to top window"))
 set_keymap("n", "<C-h>", "<C-w>h", opts("Move to left window"))
 set_keymap("n", "<C-l>", "<C-w>l", opts("Move to right window"))
+set_keymap({ "n", "v", "i" }, "<M-j>", "<Esc><C-w>j", opts("Move to bottom window"))
+set_keymap({ "n", "v", "i" }, "<M-k>", "<Esc><C-w>k", opts("Move to top window"))
+set_keymap({ "n", "v", "i" }, "<M-h>", "<Esc><C-w>h", opts("Move to left window"))
+set_keymap({ "n", "v", "i" }, "<M-l>", "<Esc><C-w>l", opts("Move to right window"))
+set_keymap("t", "<M-j>", "<C-\\><C-n><C-w>j", opts("Move to bottom window"))
+set_keymap("t", "<M-k>", "<C-\\><C-n><C-w>k", opts("Move to top window"))
+set_keymap("t", "<M-h>", "<C-\\><C-n><C-w>h", opts("Move to left window"))
+set_keymap("t", "<M-l>", "<C-\\><C-n><C-w>l", opts("Move to right window"))
 
 -- resize windows
 set_keymap("n", "<C-Up>", "<C-w>+", opts("Increase window height"))
