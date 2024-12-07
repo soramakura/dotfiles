@@ -71,7 +71,9 @@ local toggle_terminal_buffer = function()
 
   --- Switches to the previously focused buffer
   local switch_to_previously_focused_buffer = function()
-    vim.api.nvim_set_current_buf(vim.g.previously_focused_buffer)
+    if vim.g.previously_focused_buffer ~= nil then
+      vim.api.nvim_set_current_buf(vim.g.previously_focused_buffer)
+    end
   end
 
   local current_buffer = vim.api.nvim_get_current_buf()
