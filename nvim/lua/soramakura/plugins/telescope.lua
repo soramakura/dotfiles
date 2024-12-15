@@ -25,7 +25,7 @@ end
 return {
   "nvim-telescope/telescope.nvim",
   branch = "0.1.x",
-  keys = { "<leader>s", "<leader>e", "<leader><leader>", },
+  keys = { "<leader>s", "<leader>e", "<leader><leader>" },
   dependencies = {
     "nvim-lua/plenary.nvim",
     {
