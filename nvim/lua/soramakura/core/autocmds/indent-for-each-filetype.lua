@@ -3,11 +3,11 @@ local M = {}
 
 M.default_indent_width = 4
 
---- @type { [string]: { indent: number, expandtab: boolean } }
+--- @type { [string]: number | "<Tab>" }
 M.indent_for_each_filetype = {
-  c = { indent = 4, expandtab = true },
-  cpp = { indent = 4, expandtab = true },
-  css = { indent = 2, expandtab = true },
+  c = 4,
+  cpp = 4,
+  css = 2,
   gitconfig = "<Tab>",
   html = 2,
   javascirpt = 2,
