@@ -1,7 +1,7 @@
 return {
   {
     "tpope/vim-commentary",
-    event = { "BufEnter" },
+    keys = { "g" },
   },
   {
     "folke/todo-comments.nvim",
