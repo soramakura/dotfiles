@@ -2,7 +2,7 @@ local set_lsp_keymaps = function()
   local set_keymap = vim.keymap.set
   local opts = function(desc)
     return { desc = desc, noremap = true, silent = true }
- end
+  end
 
   local builtin = require("telescope.builtin")
   set_keymap("n", "gd", builtin.lsp_definitions, opts("Go to definition"))
@@ -34,7 +34,7 @@ return {
   },
   {
     "williamboman/mason.nvim",
-    event = { "VeryLazy" },
+    event = { "BufNewFile", "BufReadPre" },
     dependencies = {
       "williamboman/mason-lspconfig.nvim",
       "WhoIsSethDaniel/mason-tool-installer.nvim",

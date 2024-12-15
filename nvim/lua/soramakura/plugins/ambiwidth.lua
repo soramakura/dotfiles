@@ -1,6 +1,6 @@
 return {
   "delphinus/cellwidths.nvim",
-  event = "VeryLazy",
+  event = { "BufEnter" },
   opts = {
     name = "default",
   },

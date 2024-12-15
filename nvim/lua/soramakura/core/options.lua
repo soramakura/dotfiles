@@ -40,8 +40,15 @@ vim.opt.smartcase = true
 vim.opt.incsearch = true
 vim.opt.wrapscan = true
 
--- use sysmtem clipboard as default register
-vim.opt.clipboard:append("unnamedplus")
+-- lazy sync of system clipboard and default registers
+vim.api.nvim_create_autocmd({ "VimEnter" }, {
+  callback = function()
+    vim.schedule(function()
+      vim.opt.clipboard:append("unnamedplus")
+    end)
+  end,
+})
+
 
 -- backspace
 vim.opt.backspace = "indent,eol,start"
