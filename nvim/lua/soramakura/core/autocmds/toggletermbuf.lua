@@ -75,7 +75,6 @@ function ToggleTermBuf:__create_terminal_window()
 
   self.win_id = vim.api.nvim_open_win(self.buf_id, true, self.win_config)
 
-  print(self.buf_id)
   if vim.bo[self.buf_id].buftype ~= "terminal" then
     vim.cmd.terminal()
   end
