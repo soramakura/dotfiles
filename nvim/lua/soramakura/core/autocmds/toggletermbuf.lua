@@ -3,71 +3,102 @@ local M = {}
 
 --- @class ToggleTermBuf
 ---
---- @field last_focused_buffer number?
 --- @field buf_id number
+--- @field win_id number
+--- @field win_config {
+---   relative: string,
+---   width: integer,
+---   height: integer,
+---   col: integer,
+---   row: integer,
+---   style: string,
+---   border: string,
+--- }
 ---
 local ToggleTermBuf = {}
 
---- Remembers the last focused buffer
+--- Updates the config of the window
 ---
---- This function returns a handle to last focused non-terminal buffer
+--- This function returns the config of the window
 ---
 --- @private
---- @return integer
+--- @return {
+---   relative: string,
+---   width: integer,
+---   height: integer,
+---   col: integer,
+---   row: integer,
+---   style: string,
+---   border: string,
+--- }
 ---
-function ToggleTermBuf:__set_last_focused_buffer()
-  self.last_focused_buffer = vim.api.nvim_get_current_buf()
-  return self.last_focused_buffer
+function ToggleTermBuf:__update_win_config()
+  if self.win_config == nil then
+    self.win_config = {
+      relative = "editor",
+      style = "minimal",
+      border = "rounded",
+    }
+  end
+
+  self.win_config.width  = math.floor(vim.o.columns * 0.8)
+  self.win_config.height = math.floor(vim.o.lines * 0.8)
+  self.win_config.col    = math.floor((vim.o.columns - self.win_config.width) / 2)
+  self.win_config.row    = math.floor((vim.o.lines - self.win_config.height - 2) / 2)
+
+  return self.win_config
 end
 
---- Spawn a new terminal buffer
+--- Creates a new buffer
 ---
---- This function returns a handle to the terminal buffer
+--- This function returns a handle to the buffer
 ---
 --- @private
 --- @return integer
 ---
-function ToggleTermBuf:__spawn()
-  -- create terminal buffer
-  vim.cmd.terminal()
-
-  self.buf_id = vim.api.nvim_get_current_buf()
+function ToggleTermBuf:__create_buffer()
+  self.buf_id = vim.api.nvim_create_buf(false, true)
   return self.buf_id
 end
 
---- Creates a new terminal buffer
+--- Creates a new terminal window
 ---
---- This function returns ToggleTermBuf
+--- This function returns a handle to the window
 ---
---- @return ToggleTermBuf
+--- @private
+--- @return integer
 ---
-function ToggleTermBuf:create()
-  self:__set_last_focused_buffer()
-  self:__spawn()
-  self:close()
+function ToggleTermBuf:__create_terminal_window()
+  if self.win_config == nil then
+    self:__update_win_config()
+  end
 
-  return self
+  self.win_id = vim.api.nvim_open_win(self.buf_id, true, self.win_config)
+
+  print(self.buf_id)
+  if vim.bo[self.buf_id].buftype ~= "terminal" then
+    vim.cmd.terminal()
+  end
+
+  return self.win_id
 end
 
 --- Opens the ToggleTermBuf
 ---
 function ToggleTermBuf:open()
-  if not self.buf_id then
-    self:create()
+  if self.buf_id == nil or not vim.api.nvim_buf_is_valid(self.buf_id) then
+    self:__create_buffer()
   end
 
-  self:__set_last_focused_buffer()
+  self:__create_terminal_window()
 
-  vim.api.nvim_set_current_buf(self.buf_id)
   vim.cmd.startinsert()
 end
 
 --- Closes the ToggleTermBuf
 ---
 function ToggleTermBuf:close()
-  if self.last_focused_buffer then
-    vim.api.nvim_set_current_buf(self.last_focused_buffer)
-  end
+  vim.api.nvim_win_hide(self.win_id)
 end
 
 --- Returns whether the ToggleTermBuf is open
@@ -75,10 +106,10 @@ end
 --- @return boolean
 ---
 function ToggleTermBuf:is_open()
-  if self.buf_id then
-    return vim.api.nvim_get_current_buf() == self.buf_id
-  else
+  if self.win_id == nil then
     return false
+  else
+    return vim.api.nvim_win_is_valid(self.win_id)
   end
 end
 
@@ -89,6 +120,15 @@ function ToggleTermBuf:toggle()
     self:close()
   else
     self:open()
+  end
+end
+
+--- Resizes the ToggletermBuf window by match the editor size
+---
+function ToggleTermBuf:on_resize()
+  self:__update_win_config()
+  if self:is_open() then
+    vim.api.nvim_win_set_config(self.win_id, self.win_config)
   end
 end
 
@@ -104,10 +144,21 @@ local function setup_command()
   end, {})
 end
 
+local function setup_autocmd()
+  local group_id = vim.api.nvim_create_augroup("soramakura::config::core::clear-registers", { clear = true })
+  vim.api.nvim_create_autocmd("VimResized", {
+    group = group_id,
+    callback = function()
+      ToggleTermBuf:on_resize()
+    end,
+  })
+end
+
 --- Setup toggletermbuf
 ---
 local function setup()
   setup_command()
+  setup_autocmd()
 end
 
 M.ToggleTermBuf = ToggleTermBuf
