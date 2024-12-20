@@ -42,9 +42,9 @@ function ToggleTermBuf:__update_win_config()
   end
 
   self.win_config.width  = math.floor(vim.o.columns * 0.8)
-  self.win_config.height = math.floor(vim.o.lines * 0.8)
+  self.win_config.height = math.floor((vim.o.lines - 2) * 0.8)
   self.win_config.col    = math.floor((vim.o.columns - self.win_config.width) / 2)
-  self.win_config.row    = math.floor((vim.o.lines - self.win_config.height - 2) / 2)
+  self.win_config.row    = math.floor((vim.o.lines - self.win_config.height) / 2 - 2)
 
   return self.win_config
 end
