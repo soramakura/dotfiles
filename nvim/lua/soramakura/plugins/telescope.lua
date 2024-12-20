@@ -17,6 +17,11 @@ local set_telescope_keymaps = function()
   set_keymap("n", "<leader>st", builtin.filetypes, keymap_opts("Search file types"))
   set_keymap("n", "<leader>sh", builtin.help_tags, keymap_opts("Search help"))
   set_keymap("n", "<leader>ss", builtin.treesitter, keymap_opts("Search symbols"))
+
+  set_keymap("n", "<leader>gb", builtin.git_branches, keymap_opts("Search branches"))
+  set_keymap("n", "<leader>gc", builtin.git_commits, keymap_opts("Search commits"))
+  set_keymap("n", "<leader>gs", builtin.git_status, keymap_opts("View status"))
+
   set_keymap("n", "<leader>e", function()
     require("telescope").extensions.file_browser.file_browser()
   end, keymap_opts("Open file browser"))
