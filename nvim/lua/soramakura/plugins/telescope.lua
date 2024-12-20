@@ -61,6 +61,11 @@ return {
           "--hidden",
           "--no-ignore",
         },
+        layout_config = {
+          horizontal = { mirror = false },
+          vertical = { mirror = false },
+          preview_cutoff = 100,
+        },
       },
       extensions = {
         fzf = {
