@@ -18,6 +18,11 @@ vim.opt.relativenumber = true
 vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.opt.breakindent = true
+-- default indentation options used before opening a buffer with a given file type
+vim.opt.expandtab = true
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
 
 -- enable line wrapping
 vim.opt.wrap = true
