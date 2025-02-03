@@ -10,13 +10,16 @@ M.indent_for_each_filetype = {
   css = 2,
   gitconfig = "<Tab>",
   html = 2,
+  json = 2,
   javascirpt = 2,
   lua = 2,
   make = "<Tab>",
   markdown = 2,
   rust = 4,
   svelte = 2,
+  toml = 2,
   typescript = 2,
+  yaml = 2,
 }
 
 local function set_indent_style_by_filetype(filetype)
