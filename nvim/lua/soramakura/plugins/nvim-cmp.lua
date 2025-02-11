@@ -52,14 +52,15 @@ return {
         ["<C-Space>"] = cmp.mapping.complete(),
       },
       formatting = {
-        fields = { "abbr", "kind", "menu" },
+        fields = { "kind", "abbr", "menu" },
         format = lspkind.cmp_format({
+          mode = "symbol",
           maxwidth = {
-            menu = function()
-              return math.floor(0.45 * vim.o.columns)
-            end,
             abbr = function()
-              return math.floor(0.45 * vim.o.columns)
+              return math.floor(0.35 * vim.o.columns)
+            end,
+            menu = function()
+              return math.floor(0.30 * vim.o.columns)
             end,
           },
           ellipsis_char = "...",
