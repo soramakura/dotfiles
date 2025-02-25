@@ -75,7 +75,13 @@ return {
       "williamboman/mason.nvim",
       {
         "j-hui/fidget.nvim",
-        opts = {},
+        opts = {
+          notification  = {
+            window = {
+              winblend = 0,
+            },
+          },
+        },
       },
       "hrsh7th/cmp-nvim-lsp",
     },

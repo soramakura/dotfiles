@@ -37,4 +37,7 @@ require("lazy").setup({ { import  = "soramakura.plugins" } }, {
       },
     },
   },
+  ui = {
+    border = "single",
+  },
 })
