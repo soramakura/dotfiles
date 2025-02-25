@@ -7,7 +7,6 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- back to normal mode quickly
-set_keymap("i", "jj", "<Esc>", opts("Exit normal mode quickly"))
 set_keymap("t", "<Esc><Esc>", "<C-\\><C-n>", opts("Exit terminal mode quickly"))
 
 -- toggle terminal buffer
