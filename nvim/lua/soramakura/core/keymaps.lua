@@ -10,6 +10,7 @@ vim.g.maplocalleader = " "
 set_keymap("t", "<Esc><Esc>", "<C-\\><C-n>", opts("Exit terminal mode quickly"))
 
 -- toggle terminal buffer
+set_keymap({ "n", "t", "v" }, "<C-t>", "<CMD>ToggleTermBuf<CR>", opts("Toggle terminal buffer"))
 set_keymap({ "n", "t", "v" }, "<M-s>", "<CMD>ToggleTermBuf<CR>", opts("Toggle terminal buffer"))
 
 -- open terminal buffer
