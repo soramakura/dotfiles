@@ -37,7 +37,6 @@ return {
     event = { "BufNewFile", "BufReadPre" },
     dependencies = {
       "williamboman/mason-lspconfig.nvim",
-      "WhoIsSethDaniel/mason-tool-installer.nvim",
     },
     opts = {
       ui = {
@@ -51,14 +50,13 @@ return {
     config = function(_, opts)
       require("mason").setup(opts)
 
-      require("mason-lspconfig").setup({})
-      require("mason-tool-installer").setup({
+      require("mason-lspconfig").setup({
+        automatic_installation = true,
         ensure_installed = {
           "clangd",
           "lua_ls",
           "rust_analyzer",
-          "stylua",
-        },
+        }
       })
     end,
   },
@@ -109,6 +107,7 @@ return {
               },
             },
           })
+          vim.lsp.enable("lua_ls")
         end,
         ["rust_analyzer"] = function()
           require("lspconfig").rust_analyzer.setup({
@@ -121,6 +120,7 @@ return {
               },
             },
           })
+          vim.lsp.enable("rust_analyzer")
         end,
       })
 
