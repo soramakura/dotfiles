@@ -1,19 +1,3 @@
-local set_lsp_keymaps = function()
-  local set_keymap = vim.keymap.set
-  local opts = function(desc)
-    return { desc = desc, noremap = true, silent = true }
-  end
-
-  local builtin = require("telescope.builtin")
-  set_keymap("n", "gd", builtin.lsp_definitions, opts("Go to definition"))
-  set_keymap("n", "gy", builtin.lsp_type_definitions, opts("Go to type definition"))
-  set_keymap("n", "gi", builtin.lsp_implementations, opts("Go to implementation"))
-  set_keymap("n", "gr", builtin.lsp_references, opts("Go to references"))
-  set_keymap("n", "<leader>d", function()
-    builtin.diagnostics({ bufnr = 0 })
-  end, opts("Show diagnostics"))
-end
-
 return {
   {
     "folke/lazydev.nvim",
@@ -74,7 +58,7 @@ return {
       {
         "j-hui/fidget.nvim",
         opts = {
-          notification  = {
+          notification = {
             window = {
               winblend = 0,
             },
@@ -84,47 +68,36 @@ return {
       "hrsh7th/cmp-nvim-lsp",
     },
     config = function()
-      local lspconfig = require("lspconfig")
-
       local capabilities = require("cmp_nvim_lsp").default_capabilities(
         vim.lsp.protocol.make_client_capabilities()
       )
-      require("mason-lspconfig").setup_handlers({
-        function(server_name)
-          -- default handler
-          lspconfig[server_name].setup({
-            capabilities = capabilities,
-          })
-        end,
-        ["lua_ls"] = function()
-          lspconfig.lua_ls.setup({
-            settings = {
-              capabilities = capabilities,
-              Lua = {
-                diagnostics = {
-                  globals = { "vim" },
-                },
-              },
-            },
-          })
-          vim.lsp.enable("lua_ls")
-        end,
-        ["rust_analyzer"] = function()
-          require("lspconfig").rust_analyzer.setup({
-            capabilities = capabilities,
-            settings = {
-              ["rust-analyzer"] = {
-                check = {
-                  command = "clippy",
-                },
-              },
-            },
-          })
-          vim.lsp.enable("rust_analyzer")
-        end,
+      vim.lsp.config("*", {
+        capabilities = capabilities,
       })
 
-      set_lsp_keymaps()
+      vim.lsp.config("lua_ls", {
+        settings = {
+          Lua = {
+            diagnostics = {
+              globals = { "vim" },
+            },
+          },
+        },
+      })
+      vim.lsp.enable("lua_ls")
+
+      vim.lsp.config("rust_analyzer", {
+        settings = {
+          ["rust-analyzer"] = {
+            check = {
+              command = "clippy",
+            },
+          },
+        },
+      })
+      vim.lsp.enable("rust_analyzer")
+
+      vim.lsp.enable(require('mason-lspconfig').get_installed_servers())
     end,
   },
 }
