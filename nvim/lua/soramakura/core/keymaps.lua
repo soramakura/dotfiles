@@ -7,8 +7,8 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- swap ; and : for us keyboard
-set_keymap("n", ";", ":", opts("Swap ; and :"))
-set_keymap("n", ":", ";", opts("Swap : and ;"))
+set_keymap({ "n", "v" }, ";", ":", opts("Swap ; and :"))
+set_keymap({ "n", "v" }, ":", ";", opts("Swap : and ;"))
 
 -- back to normal mode quickly
 set_keymap("t", "<Esc><Esc>", "<C-\\><C-n>", opts("Exit terminal mode quickly"))
