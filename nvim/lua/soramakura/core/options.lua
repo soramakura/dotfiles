@@ -100,8 +100,8 @@ vim.opt.updatetime = 250
 vim.opt.timeout = true
 vim.opt.timeoutlen = 300
 
--- enable Japanese help
-vim.opt.helplang = { "ja", "en" }
+-- enable English help
+vim.opt.helplang = { "en" }
 
 -- When running on Windows, change the shell from cmd.exe to powershell
 vim.opt.termguicolors = true
