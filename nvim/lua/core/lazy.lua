@@ -15,7 +15,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({ { import  = "soramakura.plugins" } }, {
+require("lazy").setup({ { import  = "plugins" } }, {
   default = {
     lazy = true,
     version = false,
