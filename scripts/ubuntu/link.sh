@@ -7,16 +7,16 @@ echo $DOTFILES_DIR
 cd ${DOTFILES_DIR}
 
 # Git
-ln -snf ${DOTFILES_DIR}/git/.gitconfig ~/
+ln -snf ${DOTFILES_DIR}/config/git/.gitconfig ~/
 
 # Helix
 mkdir -p ~/.config
-ln -snf ${DOTFILES_DIR}/helix ~/.config/
+ln -snf ${DOTFILES_DIR}/config/helix ~/.config/
 
 # Neovim
 mkdir -p ~/.config
-ln -snf ${DOTFILES_DIR}/nvim ~/.config/
+ln -snf ${DOTFILES_DIR}/config/nvim ~/.config/
 
 # tmux
 mkdir -p ~/.config
-ln -snf ${DOTFILES_DIR}/tmux ~/.config/
+ln -snf ${DOTFILES_DIR}/config/tmux ~/.config/
