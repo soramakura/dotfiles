@@ -4,9 +4,10 @@
 sudo apt install -y curl wget
 
 # ripgrep
-curl -LO https://github.com/BurntSushi/ripgrep/releases/download/14.1.1/ripgrep_14.1.1-1_amd64.deb
-sudo dpkg -i ripgrep_14.1.0-1_amd64.deb
-rm  ripgrep_14.1.0-1_amd64.deb
+RIPGREP_VERSION=$(curl -s "https://api.github.com/repos/BurntSushi/ripgrep/releases/latest" | grep -Po '"tag_name": "\K[^"]*')
+curl -LO "https://github.com/BurntSushi/ripgrep/releases/download/${RIPGREP_VERSION}/ripgrep_${RIPGREP_VERSION}-1_amd64.deb"
+sudo dpkg -i "ripgrep_${RIPGREP_VERSION}-1_amd64.deb"
+rm "ripgrep_${RIPGREP_VERSION}-1_amd64.deb"
 
 # bat
 sudo apt install -y bat
