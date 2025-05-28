@@ -19,6 +19,7 @@ return {
     local neocodeium = require("neocodeium")
     neocodeium.setup({
       manual = true,
+      show_label = false,
     })
     set_neocodeium_keymaps(neocodeium)
   end,
