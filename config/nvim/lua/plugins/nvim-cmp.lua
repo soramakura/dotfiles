@@ -25,32 +25,29 @@ return {
           require("luasnip").lsp_expand(args.body)
         end,
       },
-      sources = {
+      sources = cmp.config.sources({
         { name = "nvim_lsp" },
         { name = "buffer" },
         { name = "path" },
         { name = "luasnip" },
         { name = "nvim_lua" },
         { name = "crates" },
-      },
+      }),
       window = {
         completion = cmp.config.window.bordered(),
         documentation = cmp.config.window.bordered(),
       },
-      mapping = {
+      mapping = cmp.mapping.preset.insert({
         ["<C-u>"] = cmp.mapping.scroll_docs(-2),
         ["<C-d>"] = cmp.mapping.scroll_docs(2),
         ["<C-b>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
         ["<CR>"] = cmp.mapping.confirm({ select = true }),
-        ["<C-e>"] = cmp.mapping.abort(),
-        ["<C-p>"] = cmp.mapping.select_prev_item(),
-        ["<C-n>"] = cmp.mapping.select_next_item(),
         ["<Tab>"] = cmp.mapping.select_next_item(),
         ["<S-Tab>"] = cmp.mapping.select_prev_item(),
         ["<C-l>"] = cmp.mapping.complete(),
         ["<C-Space>"] = cmp.mapping.complete(),
-      },
+      }),
       formatting = {
         fields = { "kind", "abbr", "menu" },
         format = lspkind.cmp_format({
@@ -75,17 +72,17 @@ return {
 
     cmp.setup.cmdline("/", {
       mapping = cmp.mapping.preset.cmdline(),
-      source = {
+      source = cmp.config.sources({
         { name = "buffer" },
-      },
+      }),
     })
 
     cmp.setup.cmdline(":", {
       mapping = cmp.mapping.preset.cmdline(),
-      sources = {
+      sources = cmp.config.sources({
         { name = "path" },
         { name = "cmdline" },
-      },
+      }),
     })
   end,
 }
