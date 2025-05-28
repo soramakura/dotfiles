@@ -9,6 +9,7 @@ local set_neocodeium_keymaps = function(neocodeium)
   set_keymap("i", "<M-p>", function() neocodeium.cycle_or_complete(-1) end,
     keymap_opts("Previous the Codeium suggestion"))
   set_keymap("i", "<M-l>", neocodeium.accept, keymap_opts("Accept the Codeium suggestion"))
+  set_keymap("i", "<M-S-l>", neocodeium.accept_line, keymap_opts("Accept the Codeium suggestion"))
   set_keymap("i", "<M-e>", neocodeium.clear, keymap_opts("Clear the current Codeium suggestion"))
   set_keymap("i", "<M-v>", neocodeium.visible, keymap_opts("Show/Hide the Codeium suggestion"))
 end
