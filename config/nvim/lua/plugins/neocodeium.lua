@@ -12,9 +12,17 @@ local set_neocodeium_keymaps = function(neocodeium)
   set_keymap("i", "<M-S-l>", neocodeium.accept_line, keymap_opts("Accept the Codeium suggestion"))
   set_keymap("i", "<M-e>", neocodeium.clear, keymap_opts("Clear the current Codeium suggestion"))
   set_keymap("i", "<M-v>", neocodeium.visible, keymap_opts("Show/Hide the Codeium suggestion"))
+
+  vim.api.nvim_create_autocmd("User", {
+    pattern = "NeoCodeiumCompletionDisplayed",
+    callback = function() require("cmp").abort() end
+  })
 end
 return {
   "monkoose/neocodeium",
+  dependencies = {
+    "hrsh7th/nvim-cmp",
+  },
   event = { "BufReadPre", "BufNewFile" },
   config = function()
     local neocodeium = require("neocodeium")
