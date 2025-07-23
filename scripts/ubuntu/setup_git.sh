@@ -3,7 +3,7 @@
 # Git
 sudo apt install git
 
-git config --global user.email          'soramakura418@gmail.com'
+git config --global user.email          '100016927+soramakura@users.noreply.github.com'
 git config --global user.name           'soramakura'
 git config --global core.editor         'nvim'
 git config --global core.quotepath      'false'
