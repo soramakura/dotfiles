@@ -7,6 +7,7 @@ git config --global user.email          '100016927+soramakura@users.noreply.gith
 git config --global user.name           'soramakura'
 git config --global core.editor         'nvim'
 git config --global core.quotepath      'false'
+git config --global core.autocrlf       'input'
 git config --global init.defaultBranch  'main'
 git config --global merge.ff            'false'
 git config --global fetch.prune         'true'
