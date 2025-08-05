@@ -6,6 +6,9 @@ return {
   opts = {
     flavour = "mocha",
     transparent_background = true,
+    float = {
+      transparent = true,
+    },
     term_colors = true,
     styles = {
       comments = {},
@@ -21,6 +24,12 @@ return {
       types = {},
       operators = {},
     },
+    custom_highlights = function(colors)
+      return {
+        -- Override the background color of the selected lines in telescope.nvim.
+        TelescopeSelection = { bg = colors.surface1 },
+      }
+    end,
     integrations = {
       gitsigns = true,
       markdown = true,
@@ -55,18 +64,22 @@ return {
   },
   config = function(_, opts)
     require("catppuccin").setup(opts)
+
     vim.cmd.colorscheme("catppuccin")
     vim.opt.cursorline = false
 
     vim.keymap.set("n", "<C-s>", function()
       local cat = require("catppuccin")
+      local will_become_transparent = not cat.options.transparent_background
 
       -- Toggle whether the background is transparent or not.
-      cat.options.transparent_background = not cat.options.transparent_background
+      cat.options.transparent_background = will_become_transparent
+      cat.options.float.transparent = will_become_transparent
+
       -- Hide cursorline when the background is transparent.
       -- I don't know why, but `vim.opt.cursorline = not vim.opt.cursorline`
       -- doesn't work.
-      vim.opt.cursorline = not cat.options.transparent_background
+      vim.opt.cursorline = not will_become_transparent
 
       cat.compile()
       vim.cmd.colorscheme("catppuccin")
