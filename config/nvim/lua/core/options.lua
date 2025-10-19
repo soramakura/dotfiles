@@ -148,6 +148,8 @@ vim.opt.ambiwidth = "double"
 local cellwidths = vim.fn.getcellwidths()
 local ambiwidth_excepts = {
   -- one width
+  { 0x00c0, 0x024f, 1 },
+  { 0x1e00, 0x1eff, 1 },
   { 0xe5fa, 0xe6ac, 1 },
   { 0xe700, 0xe7c5, 1 },
   { 0xf000, 0xf2e0, 1 },
