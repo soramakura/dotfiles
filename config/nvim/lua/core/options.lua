@@ -169,6 +169,7 @@ local ambiwidth_excepts = {
   { 0xf0001, 0xf1af0, 1 },
 
   -- double width
+  { 0x2160, 0x2188, 2 },
   { 0x2300, 0x23f1, 2 },
   { 0x23f3, 0x23ff, 2 },
   { 0x2600, 0x2767, 2 },
