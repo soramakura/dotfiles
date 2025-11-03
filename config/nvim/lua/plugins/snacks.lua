@@ -5,6 +5,49 @@ return {
   },
   lazy = false,
   priority = 1000,
+  keys = {
+    { "<leader><leader>", function() Snacks.picker.buffers() end, desc = "Search buffers" },
+    { "<leader>sb",       function() Snacks.picker.buffers() end, desc = "Search buffers" },
+    {
+      "<leader>sf",
+      function()
+        Snacks.picker.files({ hidden = true, ignored = true, follow = true, })
+      end,
+      desc = "Search files"
+    },
+    { "<leader>sg", function() Snacks.picker.grep() end,                      desc = "Search files by grep" },
+    { "<leader>sr", function() Snacks.picker.registers() end,                 desc = "Search registers" },
+    { "<leader>sk", function() Snacks.picker.keymaps() end,                   desc = "Search keymaps" },
+    { "<leader>sc", function() Snacks.picker.commands() end,                  desc = "Search commands" },
+    { "<leader>sh", function() Snacks.picker.help() end,                      desc = "Search help" },
+    { "<leader>sC", function() Snacks.picker.colorschemes() end,              desc = "Search colorschemes" },
+    { "<leader>sn", function() Snacks.picker.notifications() end,             desc = "Search notifications" },
+    { "<leader>sp", function() Snacks.picker.lazy() end,                      desc = "Search plugins" },
+    { "<leader>ss", function() Snacks.picker.lsp_symbols() end,               desc = "Search symbols" },
+    { "<leader>sd", function() Snacks.picker.diagnostics() end,               desc = "Search global diagnostics" },
+    { "<leader>sD", function() Snacks.picker.diagnostics_buffer() end,        desc = "Search file diagnostics" },
+
+    { "<leader>e",  function() Snacks.explorer() end,                         desc = "Open file browser" },
+    { "<leader>lg", function() Snacks.lazygit() end,                          desc = "Open lazygit" },
+
+    { "<leader>gb", function() Snacks.picker.git_branches() end,              desc = "Search git branches" },
+    { "<leader>gs", function() Snacks.picker.git_status() end,                desc = "Search git statsu" },
+    { "<leader>gt", function() Snacks.picker.git_stash() end,                 desc = "Search git stash" },
+    { "<leader>gf", function() Snacks.picker.git_log_file() end,              desc = "Search git file commits" },
+    { "<leader>gc", function() Snacks.picker.git_log() end,                   desc = "Search git commits" },
+    { "<leader>gi", function() Snacks.picker.gh_issue() end,                  desc = "Search github issues" },
+    { "<leader>gI", function() Snacks.picker.gh_issue({ state = "all" }) end, desc = "Searchall  github issues" },
+    { "<leader>gp", function() Snacks.picker.gh_pr() end,                     desc = "Search github pull requests (open)" },
+    { "<leader>gP", function() Snacks.picker.gh_pr({ state = "all" }) end,    desc = "Search all github pull requests" },
+
+    { "gD",         function() Snacks.picker.lsp_declarations() end,          desc = "Go to declaration" },
+    { "gd",         function() Snacks.picker.lsp_definitions() end,           desc = "Go to definition" },
+    { "gy",         function() Snacks.picker.lsp_type_definitions() end,      desc = "Go to definition" },
+    { "gi",         function() Snacks.picker.lsp_implementations() end,       desc = "Go to implementation" },
+    { "gr",         function() Snacks.picker.lsp_references() end,            desc = "Go to references" },
+    { "gai",        function() Snacks.picker.lsp_incoming_calls() end,        desc = "Call incoming" },
+    { "gao",        function() Snacks.picker.lsp_outgoing_calls() end,        desc = "Call outgoint" },
+  },
   opts = {
     -- disabled modules
     animate = { enabled = false, },
