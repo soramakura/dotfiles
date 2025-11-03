@@ -56,10 +56,11 @@ return {
         },
       },
       nvim_surround = true,
-      treesitter = true,
-      telescope = {
+      snacks = {
         enabled = true,
+        indent_scope_color = "",
       },
+      treesitter = true,
     },
   },
   config = function(_, opts)
