@@ -1,3 +1,83 @@
+local open_filetypes_picker = function()
+  local filetypes = {}
+  for _, ft in ipairs(vim.fn.getcompletion("", "filetype")) do
+    table.insert(filetypes, { text = ft })
+  end
+
+  Snacks.picker.pick("Filetypes", {
+    items = filetypes,
+    layout = "select",
+    format = "text",
+    confirm = function(picker, item)
+      picker:close()
+
+      if item.text then
+        vim.cmd("set ft=" .. item.text)
+      end
+    end
+  })
+end
+
+local toggle_explorer = function()
+  Snacks.explorer({
+    auto_close = true,
+    layout = {
+      reverse = false,
+      preset = "default",
+      layout = {
+        min_width = 60,
+      },
+    },
+  })
+end
+
+local lsp_progress_hook = function()
+  ---@type table<number, {token:lsp.ProgressToken, msg:string, done:boolean}[]>
+  local progress = vim.defaulttable()
+  vim.api.nvim_create_autocmd("LspProgress", {
+    ---@param ev {data: {client_id: integer, params: lsp.ProgressParams}}
+    callback = function(ev)
+      local client = vim.lsp.get_client_by_id(ev.data.client_id)
+      local value = ev.data.params
+          .value --[[@as {percentage?: number, title?: string, message?: string, kind: "begin" | "report" | "end"}]]
+      if not client or type(value) ~= "table" then
+        return
+      end
+      local p = progress[client.id]
+
+      for i = 1, #p + 1 do
+        if i == #p + 1 or p[i].token == ev.data.params.token then
+          p[i] = {
+            token = ev.data.params.token,
+            msg = ("[%3d%%] %s%s"):format(
+              value.kind == "end" and 100 or value.percentage or 100,
+              value.title or "",
+              value.message and (" **%s**"):format(value.message) or ""
+            ),
+            done = value.kind == "end",
+          }
+          break
+        end
+      end
+
+      local msg = {} ---@type string[]
+      progress[client.id] = vim.tbl_filter(function(v)
+        return table.insert(msg, v.msg) or not v.done
+      end, p)
+
+      local spinner = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" }
+      vim.notify(table.concat(msg, "\n"), "info", {
+        id = "lsp_progress",
+        title = client.name,
+        opts = function(notif)
+          notif.icon = #progress[client.id] == 0 and " "
+              or spinner[math.floor(vim.uv.hrtime() / (1e6 * 80)) % #spinner + 1]
+        end,
+      })
+    end,
+  })
+end
+
 return {
   "folke/snacks.nvim",
   dependencies = {
@@ -15,58 +95,21 @@ return {
       end,
       desc = "Search files"
     },
-    { "<leader>sg", function() Snacks.picker.grep() end,         desc = "Search files by grep" },
-    { "<leader>sG", function() Snacks.picker.grep_buffers() end, desc = "Search buffer by grep" },
-    { "<leader>sr", function() Snacks.picker.registers() end,    desc = "Search registers" },
-    { "<leader>sk", function() Snacks.picker.keymaps() end,      desc = "Search keymaps" },
-    {
-      "<leader>st",
-      function()
-        local filetypes = {}
-        for _, ft in ipairs(vim.fn.getcompletion("", "filetype")) do
-          table.insert(filetypes, { text = ft })
-        end
+    { "<leader>sg", function() Snacks.picker.grep() end,                      desc = "Search files by grep" },
+    { "<leader>sG", function() Snacks.picker.grep_buffers() end,              desc = "Search buffer by grep" },
+    { "<leader>sr", function() Snacks.picker.registers() end,                 desc = "Search registers" },
+    { "<leader>sk", function() Snacks.picker.keymaps() end,                   desc = "Search keymaps" },
+    { "<leader>st", open_filetypes_picker,                                    desc = "Search filetypes" },
+    { "<leader>sc", function() Snacks.picker.commands() end,                  desc = "Search commands" },
+    { "<leader>sh", function() Snacks.picker.help() end,                      desc = "Search help" },
+    { "<leader>sC", function() Snacks.picker.colorschemes() end,              desc = "Search colorschemes" },
+    { "<leader>sn", function() Snacks.picker.notifications() end,             desc = "Search notifications" },
+    { "<leader>sp", function() Snacks.picker.lazy() end,                      desc = "Search plugins" },
+    { "<leader>ss", function() Snacks.picker.lsp_symbols() end,               desc = "Search symbols" },
+    { "<leader>sd", function() Snacks.picker.diagnostics() end,               desc = "Search global diagnostics" },
+    { "<leader>sD", function() Snacks.picker.diagnostics_buffer() end,        desc = "Search file diagnostics" },
 
-        Snacks.picker.pick("Filetypes", {
-          items = filetypes,
-          layout = "select",
-          format = "text",
-          confirm = function(picker, item)
-            picker:close()
-
-            if item.text then
-              vim.cmd("set ft=" .. item.text)
-            end
-          end
-        })
-      end,
-      desc = "Search filetypes"
-    },
-    { "<leader>sc", function() Snacks.picker.commands() end,           desc = "Search commands" },
-    { "<leader>sh", function() Snacks.picker.help() end,               desc = "Search help" },
-    { "<leader>sC", function() Snacks.picker.colorschemes() end,       desc = "Search colorschemes" },
-    { "<leader>sn", function() Snacks.picker.notifications() end,      desc = "Search notifications" },
-    { "<leader>sp", function() Snacks.picker.lazy() end,               desc = "Search plugins" },
-    { "<leader>ss", function() Snacks.picker.lsp_symbols() end,        desc = "Search symbols" },
-    { "<leader>sd", function() Snacks.picker.diagnostics() end,        desc = "Search global diagnostics" },
-    { "<leader>sD", function() Snacks.picker.diagnostics_buffer() end, desc = "Search file diagnostics" },
-
-    {
-      "<leader>e",
-      function()
-        Snacks.explorer({
-          auto_close = true,
-          layout = {
-            reverse = false,
-            preset = "default",
-            layout = {
-              min_width = 60,
-            },
-          },
-        })
-      end,
-      desc = "Open file browser"
-    },
+    { "<leader>e",  toggle_explorer,                                          desc = "Open file browser" },
     { "<leader>lg", function() Snacks.lazygit() end,                          desc = "Open lazygit" },
 
     { "<leader>gb", function() Snacks.picker.git_branches() end,              desc = "Search git branches" },
@@ -141,50 +184,7 @@ return {
     statuscolumn = { enabled = true, },
   },
   init = function()
-    ---@type table<number, {token:lsp.ProgressToken, msg:string, done:boolean}[]>
-    local progress = vim.defaulttable()
-    vim.api.nvim_create_autocmd("LspProgress", {
-      ---@param ev {data: {client_id: integer, params: lsp.ProgressParams}}
-      callback = function(ev)
-        local client = vim.lsp.get_client_by_id(ev.data.client_id)
-        local value = ev.data.params
-            .value --[[@as {percentage?: number, title?: string, message?: string, kind: "begin" | "report" | "end"}]]
-        if not client or type(value) ~= "table" then
-          return
-        end
-        local p = progress[client.id]
-
-        for i = 1, #p + 1 do
-          if i == #p + 1 or p[i].token == ev.data.params.token then
-            p[i] = {
-              token = ev.data.params.token,
-              msg = ("[%3d%%] %s%s"):format(
-                value.kind == "end" and 100 or value.percentage or 100,
-                value.title or "",
-                value.message and (" **%s**"):format(value.message) or ""
-              ),
-              done = value.kind == "end",
-            }
-            break
-          end
-        end
-
-        local msg = {} ---@type string[]
-        progress[client.id] = vim.tbl_filter(function(v)
-          return table.insert(msg, v.msg) or not v.done
-        end, p)
-
-        local spinner = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" }
-        vim.notify(table.concat(msg, "\n"), "info", {
-          id = "lsp_progress",
-          title = client.name,
-          opts = function(notif)
-            notif.icon = #progress[client.id] == 0 and " "
-                or spinner[math.floor(vim.uv.hrtime() / (1e6 * 80)) % #spinner + 1]
-          end,
-        })
-      end,
-    })
+    lsp_progress_hook()
 
     vim.api.nvim_create_autocmd("User", {
       pattern = "VeryLazy",
