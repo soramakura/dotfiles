@@ -15,9 +15,10 @@ return {
       end,
       desc = "Search files"
     },
-    { "<leader>sg", function() Snacks.picker.grep() end,      desc = "Search files by grep" },
-    { "<leader>sr", function() Snacks.picker.registers() end, desc = "Search registers" },
-    { "<leader>sk", function() Snacks.picker.keymaps() end,   desc = "Search keymaps" },
+    { "<leader>sg", function() Snacks.picker.grep() end,         desc = "Search files by grep" },
+    { "<leader>sG", function() Snacks.picker.grep_buffers() end, desc = "Search buffer by grep" },
+    { "<leader>sr", function() Snacks.picker.registers() end,    desc = "Search registers" },
+    { "<leader>sk", function() Snacks.picker.keymaps() end,      desc = "Search keymaps" },
     {
       "<leader>st",
       function()
