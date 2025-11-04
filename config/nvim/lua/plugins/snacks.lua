@@ -15,9 +15,32 @@ return {
       end,
       desc = "Search files"
     },
-    { "<leader>sg", function() Snacks.picker.grep() end,                      desc = "Search files by grep" },
-    { "<leader>sr", function() Snacks.picker.registers() end,                 desc = "Search registers" },
-    { "<leader>sk", function() Snacks.picker.keymaps() end,                   desc = "Search keymaps" },
+    { "<leader>sg", function() Snacks.picker.grep() end,      desc = "Search files by grep" },
+    { "<leader>sr", function() Snacks.picker.registers() end, desc = "Search registers" },
+    { "<leader>sk", function() Snacks.picker.keymaps() end,   desc = "Search keymaps" },
+    {
+      "<leader>st",
+      function()
+        local filetypes = {}
+        for _, ft in ipairs(vim.fn.getcompletion("", "filetype")) do
+          table.insert(filetypes, { text = ft })
+        end
+
+        Snacks.picker.pick("Filetypes", {
+          items = filetypes,
+          layout = "select",
+          format = "text",
+          confirm = function(picker, item)
+            picker:close()
+
+            if item.text then
+              vim.cmd("set ft=" .. item.text)
+            end
+          end
+        })
+      end,
+      desc = "Search filetypes"
+    },
     { "<leader>sc", function() Snacks.picker.commands() end,                  desc = "Search commands" },
     { "<leader>sh", function() Snacks.picker.help() end,                      desc = "Search help" },
     { "<leader>sC", function() Snacks.picker.colorschemes() end,              desc = "Search colorschemes" },
