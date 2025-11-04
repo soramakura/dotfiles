@@ -42,16 +42,31 @@ return {
       end,
       desc = "Search filetypes"
     },
-    { "<leader>sc", function() Snacks.picker.commands() end,                  desc = "Search commands" },
-    { "<leader>sh", function() Snacks.picker.help() end,                      desc = "Search help" },
-    { "<leader>sC", function() Snacks.picker.colorschemes() end,              desc = "Search colorschemes" },
-    { "<leader>sn", function() Snacks.picker.notifications() end,             desc = "Search notifications" },
-    { "<leader>sp", function() Snacks.picker.lazy() end,                      desc = "Search plugins" },
-    { "<leader>ss", function() Snacks.picker.lsp_symbols() end,               desc = "Search symbols" },
-    { "<leader>sd", function() Snacks.picker.diagnostics() end,               desc = "Search global diagnostics" },
-    { "<leader>sD", function() Snacks.picker.diagnostics_buffer() end,        desc = "Search file diagnostics" },
+    { "<leader>sc", function() Snacks.picker.commands() end,           desc = "Search commands" },
+    { "<leader>sh", function() Snacks.picker.help() end,               desc = "Search help" },
+    { "<leader>sC", function() Snacks.picker.colorschemes() end,       desc = "Search colorschemes" },
+    { "<leader>sn", function() Snacks.picker.notifications() end,      desc = "Search notifications" },
+    { "<leader>sp", function() Snacks.picker.lazy() end,               desc = "Search plugins" },
+    { "<leader>ss", function() Snacks.picker.lsp_symbols() end,        desc = "Search symbols" },
+    { "<leader>sd", function() Snacks.picker.diagnostics() end,        desc = "Search global diagnostics" },
+    { "<leader>sD", function() Snacks.picker.diagnostics_buffer() end, desc = "Search file diagnostics" },
 
-    { "<leader>e",  function() Snacks.explorer() end,                         desc = "Open file browser" },
+    {
+      "<leader>e",
+      function()
+        Snacks.explorer({
+          auto_close = true,
+          layout = {
+            reverse = false,
+            preset = "default",
+            layout = {
+              min_width = 60,
+            },
+          },
+        })
+      end,
+      desc = "Open file browser"
+    },
     { "<leader>lg", function() Snacks.lazygit() end,                          desc = "Open lazygit" },
 
     { "<leader>gb", function() Snacks.picker.git_branches() end,              desc = "Search git branches" },
@@ -100,7 +115,26 @@ return {
     lazygit = { enabled = true, },
     notifier = { enabled = true, },
     notify = { enabled = true, },
-    picker = { enabled = true, },
+    picker = {
+      enabled = true,
+      layout = {
+        preset = "default",
+        layout = {
+          box = "horizontal",
+          width = 0.8,
+          min_width = 60,
+          height = 0.8,
+          {
+            box = "vertical",
+            border = true,
+            title = "{title} {live} {flags}",
+            { win = "input", height = 1,     border = "bottom" },
+            { win = "list",  border = "none" },
+          },
+          { win = "preview", title = "{preview}", border = true, width = 0.45 },
+        },
+      },
+    },
     profiler = { enabled = true, },
     quickfile = { enabled = true, },
     rename = { enabled = true, },
