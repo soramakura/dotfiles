@@ -3,9 +3,6 @@
 echo $DOTFILES_DIR
 cd ${DOTFILES_DIR}
 
-# Git
-ln -snf ${DOTFILES_DIR}/config/git/.gitconfig ~/
-
 # Helix
 mkdir -p ~/.config
 ln -snf ${DOTFILES_DIR}/config/helix ~/.config/
