@@ -2,7 +2,7 @@ return {
   "catppuccin/nvim",
   name = "catppuccin",
   lazy = false,
-  priority = 1000,
+  priority = 1001,
   opts = {
     flavour = "mocha",
     transparent_background = true,
@@ -56,10 +56,11 @@ return {
         },
       },
       nvim_surround = true,
-      treesitter = true,
-      telescope = {
+      snacks = {
         enabled = true,
+        indent_scope_color = "",
       },
+      treesitter = true,
     },
   },
   config = function(_, opts)
