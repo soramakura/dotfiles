@@ -6,6 +6,11 @@ dotfiles for soramakura.
 curl https://raw.githubusercontent.com/soramakura/dotfiles/main/setup_ubuntu.sh | bash -xe
 ```
 
+## Windows
+```
+curl https://raw.githubusercontent.com/soramakura/dotfiles/main/setup_windows.bat | cmd
+```
+
 ## Fonts
 - https://github.com/yuru7/HackGen/releases
   - Install `HackGen_NF_v*.zip`
