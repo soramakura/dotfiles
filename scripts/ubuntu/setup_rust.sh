@@ -17,3 +17,6 @@ cargo install cargo-bundle-licenses
 
 # For checking dependencies
 cargo install cargo-tree
+
+# For nvim-treesitter
+cargo install tree-sitter-cli
