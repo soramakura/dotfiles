@@ -121,26 +121,8 @@ if vim.loop.os_uname().sysname == "Windows_NT" then
   end
 end
 
--- add frame to the hover window
-local original_hover = vim.lsp.buf.hover
----@diagnostic disable-next-line: duplicate-set-field
-vim.lsp.buf.hover = function()
-  original_hover({
-    border = "rounded",
-  })
-end
-
-local original_signature_help = vim.lsp.buf.signature_help
----@diagnostic disable-next-line: duplicate-set-field
-vim.lsp.buf.signature_help = function()
-  original_signature_help({
-    border = "rounded",
-  })
-end
-
-vim.diagnostic.config({
-  float = { border = "rounded" },
-})
+-- border settings
+vim.o.winborder = "single"
 
 -- prevent two-width characters from being displayed in one-width.
 vim.opt.ambiwidth = "single"

@@ -37,7 +37,7 @@ function ToggleTermBuf:__update_win_config()
     self.win_config = {
       relative = "editor",
       style = "minimal",
-      border = "rounded",
+      border = vim.o.winborder or "rounded",
     }
   end
 

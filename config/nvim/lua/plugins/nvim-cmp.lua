@@ -34,8 +34,8 @@ return {
         { name = "crates" },
       }),
       window = {
-        completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered(),
+        completion = cmp.config.window.bordered({ border = vim.o.winborder }),
+        documentation = cmp.config.window.bordered({ border = vim.o.winborder }),
       },
       mapping = cmp.mapping.preset.insert({
         ["<C-u>"] = cmp.mapping.scroll_docs(-2),
