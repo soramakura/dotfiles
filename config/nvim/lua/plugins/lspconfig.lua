@@ -1,3 +1,25 @@
+local lsp_config_table = {
+  ["lua_ls"] = {
+    settings = {
+      Lua = {
+        diagnostics = {
+          globals = { "vim" },
+        },
+      },
+    },
+  },
+
+  ["rust_analyzer"] = {
+    settings = {
+      ["rust-analyzer"] = {
+        check = {
+          command = "clippy",
+        },
+      },
+    },
+  },
+}
+
 return {
   {
     "folke/lazydev.nvim",
@@ -20,10 +42,26 @@ return {
     end,
   },
   {
-    "williamboman/mason.nvim",
-    event = { "BufNewFile", "BufReadPre" },
+    "neovim/nvim-lspconfig",
+    cmd = {
+      "LspInfo",
+      "LspStart",
+      "LspStop",
+      "LspRestart",
+    },
     dependencies = {
-      "williamboman/mason-lspconfig.nvim",
+      "hrsh7th/cmp-nvim-lsp",
+    },
+  },
+  {
+    "williamboman/mason.nvim",
+    cmd = {
+      "Mason",
+      "MasonUpdate",
+      "MasonInstall",
+      "MasonUninstall",
+      "MasonUninstallAll",
+      "MasonLog",
     },
     opts = {
       ui = {
@@ -34,33 +72,28 @@ return {
         },
       },
     },
-    config = function(_, opts)
-      require("mason").setup(opts)
-
-      require("mason-lspconfig").setup({
-        automatic_enable = true,
-        ensure_installed = {
-          "clangd",
-          "lua_ls",
-          "rust_analyzer",
-        }
-      })
-    end,
   },
   {
-    "neovim/nvim-lspconfig",
-    event = { "BufReadPre", "BufNewFile" },
+    "williamboman/mason-lspconfig.nvim",
+    event = { "FileType" },
     cmd = {
-      "LspInfo",
       "LspInstall",
-      "LspStart",
-      "LspRestart",
+      "LspUninstall",
     },
     dependencies = {
+      "neovim/nvim-lspconfig",
       "williamboman/mason.nvim",
       "hrsh7th/cmp-nvim-lsp",
     },
-    config = function()
+    opts = {
+      automatic_enable = true,
+      ensure_installed = {
+        "clangd",
+        "lua_ls",
+        "rust_analyzer",
+      },
+    },
+    config = function(_, opts)
       local capabilities = require("cmp_nvim_lsp").default_capabilities(
         vim.lsp.protocol.make_client_capabilities()
       )
@@ -68,29 +101,11 @@ return {
         capabilities = capabilities,
       })
 
-      vim.lsp.config("lua_ls", {
-        settings = {
-          Lua = {
-            diagnostics = {
-              globals = { "vim" },
-            },
-          },
-        },
-      })
-      vim.lsp.enable("lua_ls")
+      for lsp_name, conf in pairs(lsp_config_table) do
+        vim.lsp.config(lsp_name, conf)
+      end
 
-      vim.lsp.config("rust_analyzer", {
-        settings = {
-          ["rust-analyzer"] = {
-            check = {
-              command = "clippy",
-            },
-          },
-        },
-      })
-      vim.lsp.enable("rust_analyzer")
-
-      vim.lsp.enable(require('mason-lspconfig').get_installed_servers())
-    end,
+      require("mason-lspconfig").setup(opts)
+    end
   },
 }
