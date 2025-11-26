@@ -22,7 +22,7 @@ return {
   },
   {
     "windwp/nvim-ts-autotag",
-    event = { "BufReadPre", "BufNewFile" },
+    event = { "FileType" },
     opts = {
       opts = {
         enable_close = true,
