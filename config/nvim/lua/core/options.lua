@@ -122,7 +122,7 @@ if vim.loop.os_uname().sysname == "Windows_NT" then
 end
 
 -- border settings
-vim.o.winborder = "single"
+vim.o.winborder = "rounded"
 
 -- prevent two-width characters from being displayed in one-width.
 vim.opt.ambiwidth = "single"
