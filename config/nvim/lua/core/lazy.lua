@@ -38,6 +38,6 @@ require("lazy").setup({ { import  = "plugins" } }, {
     },
   },
   ui = {
-    border = "single",
+    border = vim.o.winborder,
   },
 })
