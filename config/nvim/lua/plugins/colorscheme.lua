@@ -16,7 +16,6 @@ return {
     },
     integrations = {
       gitsigns = true,
-      markdown = true,
       mason = true,
       cmp = true,
       nvim_surround = true,
