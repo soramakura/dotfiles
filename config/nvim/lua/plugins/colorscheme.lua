@@ -14,12 +14,6 @@ return {
       comments = {},
       conditionals = {},
     },
-    custom_highlights = function(colors)
-      return {
-        -- Override the background color of the selected lines in telescope.nvim.
-        TelescopeSelection = { bg = colors.surface1 },
-      }
-    end,
     integrations = {
       gitsigns = true,
       markdown = true,
