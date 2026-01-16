@@ -49,7 +49,7 @@ return {
         ["<C-Space>"] = cmp.mapping.complete(),
       }),
       formatting = {
-        fields = { "kind", "abbr", "menu" },
+        fields = { "icon", "abbr", "menu" },
         format = lspkind.cmp_format({
           mode = "symbol",
           maxwidth = {
