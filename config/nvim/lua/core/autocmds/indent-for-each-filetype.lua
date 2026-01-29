@@ -9,6 +9,7 @@ M.indent_for_each_filetype = {
   cpp = 4,
   css = 2,
   gitconfig = "<Tab>",
+  go = "<Tab>",
   html = 2,
   json = 2,
   javascirpt = 2,
