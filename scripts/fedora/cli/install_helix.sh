@@ -1,3 +1,3 @@
 #!/bin/bash -xe
 
-sudo dnf install helix
+sudo dnf install -y helix
