@@ -17,7 +17,6 @@ git config --global color.ui            'auto'
 
 # GitHub CLI
 sudo dnf install -y gh
-gh auth login
 
 # Lazygit
 sudo dnf copr enable dejan/lazygit
