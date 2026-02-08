@@ -18,8 +18,9 @@ source ./scripts/ubuntu/setup_langc.sh
 source ./scripts/ubuntu/setup_cmdtools.sh
 source ./scripts/ubuntu/setup_git.sh
 source ./scripts/ubuntu/setup_rust.sh
-source ./scripts/ubuntu/setup_helix.sh
 source ./scripts/ubuntu/setup_neovim.sh
+source ./scripts/ubuntu/setup_helix.sh
+source ./scripts/ubuntu/setup_tmux.sh
 source ./scripts/ubuntu/link.sh
 
 if [ -d ~/.ssh ] && [ -f ~/.ssh/id_ed25519.pub ] ; then
