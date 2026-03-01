@@ -12,6 +12,7 @@ local function clear_registers()
   for i = 1, #M.registers_to_clear do
     vim.fn.setreg(M.registers_to_clear[i], {})
   end
+  vim.cmd("wshada!")
 end
 
 local function setup_autocmds()
