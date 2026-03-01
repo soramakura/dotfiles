@@ -166,3 +166,10 @@ for i = 1, #ambiwidth_excepts do
   table.insert(cellwidths, ambiwidth_excepts[i])
 end
 vim.fn.setcellwidths(cellwidths)
+
+-- automatically delete lsp.log older than one day at startup
+local lsp_log = vim.fn.stdpath("state") .. "/lsp.log"
+local stat = vim.uv.fs_stat(lsp_log)
+if stat and (os.time() - stat.mtime.sec) > 86400 then
+  os.remove(lsp_log)
+end
