@@ -1,4 +1,4 @@
--- @module "clear-registers"
+--- @module "clear-registers"
 local M = {}
 
 M.registers_to_clear = {
@@ -7,7 +7,6 @@ M.registers_to_clear = {
 }
 
 --- Clears registers
----
 local function clear_registers()
   for i = 1, #M.registers_to_clear do
     vim.fn.setreg(M.registers_to_clear[i], {})
@@ -15,23 +14,9 @@ local function clear_registers()
   vim.cmd("wshada!")
 end
 
-local function setup_autocmds()
-  local group_id = vim.api.nvim_create_augroup("soramakura::config::core::clear-registers", { clear = true })
-  vim.api.nvim_create_autocmd("VimEnter", {
-    group = group_id,
-    callback = clear_registers,
-  })
-end
-
-local function setup_commands()
-  vim.api.nvim_create_user_command("ClearRegisters", clear_registers, {})
-end
-
 --- Setup clear-registers
----
 local function setup()
-  setup_autocmds()
-  setup_commands()
+  vim.api.nvim_create_user_command("ClearRegisters", clear_registers, {})
 end
 
 M.clear_registers = clear_registers
