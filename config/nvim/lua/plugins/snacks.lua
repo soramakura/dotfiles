@@ -22,11 +22,8 @@ local toggle_explorer = function()
   Snacks.explorer({
     auto_close = true,
     layout = {
-      reverse = false,
-      preset = "default",
-      layout = {
-        min_width = 60,
-      },
+      preset = "sidebar",
+      preview = true,
     },
   })
 end
