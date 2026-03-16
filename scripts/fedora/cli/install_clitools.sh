@@ -8,3 +8,4 @@ sudo dnf install -y fd-find
 
 # fzf
 sudo dnf install -y fzf
+echo 'eval "$(fzf --bash)"' >> ~/.bashrc
