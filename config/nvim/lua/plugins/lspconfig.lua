@@ -3,7 +3,7 @@ local lsp_config_table = {
     settings = {
       Lua = {
         diagnostics = {
-          globals = { "vim" },
+          globals = { "vim", "Snacks" },
         },
       },
     },
