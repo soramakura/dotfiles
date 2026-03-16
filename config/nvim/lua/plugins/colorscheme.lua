@@ -16,6 +16,22 @@ return {
     },
     integrations = {
       gitsigns = true,
+      lualine = {
+        all = function(colors)
+          ---@type CtpIntegrationLualineOverride
+          return {
+            normal = {
+              a = { bg = colors.lavendor },
+              b = { fg = colors.lavendor },
+            }
+          }
+        end,
+        macchiato = {
+          normal = {
+            a = { bg = "#abcdef", },
+          },
+        },
+      },
       mason = true,
       cmp = true,
       nvim_surround = true,
