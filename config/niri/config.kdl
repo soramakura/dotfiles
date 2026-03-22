@@ -6,6 +6,8 @@ config-notification {
     disable-failed
 }
 
+spawn-at-startup "/usr/libexec/pam_kwallet_init"
+
 gestures {
     hot-corners {
         off
