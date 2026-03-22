@@ -1,0 +1,16 @@
+// DMS Window Rules - Managed by DankMaterialShell
+// Do not edit manually - changes may be overwritten
+
+// @id=wr_1774019533941122312 @name=xwaylandvideobridge
+window-rule {
+    match app-id="^xwaylandvideobridge$"
+    open-floating true
+}
+
+// @id=wr_1774100977019216655 @name=Vivaldi Picture in Picture
+window-rule {
+    match app-id="^$" title="Picture in picture"
+    open-floating true
+    default-column-width { fixed 416; }
+    default-window-height { fixed 234; }
+}
