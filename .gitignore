@@ -1,2 +1,6 @@
 /config/nvim/lazy-lock.json
-/config/niri/dms
+
+/config/niri/config.kdl.backup*
+/config/niri/config.kdl.dmsbackup*
+/config/niri/dms/*
+!/config/niri/dms/binds.kdl
