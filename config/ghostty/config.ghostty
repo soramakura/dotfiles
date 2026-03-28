@@ -1,0 +1,11 @@
+font-family = "HackGen Console NF"
+font-feature = -calt, -liga, -dlig
+font-size = 12
+
+theme = "Builtin Tango Dark"
+background-opacity = 0.9
+background-opacity-cells=true
+background-blur-radius = 45 
+
+window-padding-x = 8
+window-padding-y = 8
