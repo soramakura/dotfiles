@@ -157,7 +157,7 @@ binds {
     Mod+Shift+P { power-off-monitors; }
     Mod+Shift+E { quit; }
 
-    Mod+T hotkey-overlay-title="Open Terminal" { spawn "konsole"; }
+    Mod+T hotkey-overlay-title="Open Terminal" { spawn "ghostty"; }
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 
     Mod+Shift+Slash { show-hotkey-overlay; }
