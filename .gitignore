@@ -5,3 +5,5 @@
 /config/niri/config.kdl.dmsbackup*
 /config/niri/dms/*
 !/config/niri/dms/binds.kdl
+
+/config/DankMaterialShell/plugins/*
