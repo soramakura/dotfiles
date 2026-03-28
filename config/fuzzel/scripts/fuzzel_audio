@@ -1,0 +1,154 @@
+#!/usr/bin/env bash
+
+# --------------------------------------------------------------------
+# Script: audio-control (Multi-stage Menu)
+# Author: soramakura
+# License: MIT
+#
+# Usage: Multi-level menu for Sinks, Sources, and Volume using wpctl.
+# --------------------------------------------------------------------
+
+GOBACK="Go back"
+EXIT="Exit"
+
+show_output_menu() {
+    # devices=$(wpctl status | grep -A 10 "Sinks:" | grep -E "^[[:space:]]+(\* )?[0-9]+\." | sed 's/^[[:space:]]*//')
+    devices=$(pactl list sinks short | awk '{print $1 ": " $2}')
+    options="$devices\n$GOBACK\n$EXIT"
+
+    selected=$(echo -e "$options" | $FUZZEL_COMMAND "Select Output: ")
+
+    case "$selected" in
+        "")
+            echo "No options chosen."
+            ;;
+        "$GOBACK")
+            show_main_menu
+            ;;
+        *)
+            if [ -n "$selected" ]; then
+                # id=$(echo "$selected" | sed -E 's/^(\* )?([0-9]+)\..*/\2/')
+                id=$(echo "$selected" | cut -d: -f1)
+                wpctl set-default "$id"
+                notify-send "Audio" "Output switched to: $selected"
+            fi
+
+            show_output_menu
+            ;;
+    esac
+}
+
+show_input_menu() {
+    devices=$(pactl list sources short | grep -v ".monitor" | awk '{print $1 ": " $2}')
+    options="$devices\n$GOBACK\n$EXIT"
+
+    selected=$(echo -e "$options" | $FUZZEL_COMMAND "Select Input: ")
+
+    case "$selected" in
+        "")
+            echo "No options chosen."
+            ;;
+        "$GOBACK")
+            show_main_menu
+            ;;
+        *)
+            if [ -n "$selected" ]; then
+                id=$(echo "$selected" | sed -E 's/^(\* )?([0-9]+)\..*/\2/')
+                wpctl set-default "$id"
+                notify-send "Audio" "Input switched to: $selected"
+            fi
+
+            show_input_menu
+            ;;
+    esac
+}
+
+show_volume_control() {
+    echo "prev: $1"
+    if [ -n "$1" ]; then
+        fuzzel_add_option="--select=$1"
+    else
+        fuzzel_add_option=""
+    fi
+
+    PLUS_FIVE="+2%"
+    MINUS_FIVE="-2%"
+    SET_TO_TEN="Set to 10%"
+    SET_TO_THIRTY="Set to 30%"
+    SET_TO_FIFTY="Set to 50%"
+    OPTIONS="$PLUS_FIVE\n$MINUS_FIVE\n$SET_TO_TEN\n$SET_TO_THIRTY\n$SET_TO_FIFTY\n$GOBACK\n$EXIT"
+
+    chosen_action=$(echo -e "$OPTIONS" | $FUZZEL_COMMAND "Volume: " $fuzzel_add_option)
+    echo "$chosen_action"
+
+    case "$chosen_action" in
+        "$GOBACK")
+            show_main_menu
+            ;;
+        "$PLUS_FIVE")
+            wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+
+            show_volume_control "$chosen_action"
+            ;;
+        "$MINUS_FIVE")
+            wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-
+            show_volume_control "$chosen_action"
+            ;;
+        "$SET_TO_TEN")
+            wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1
+            show_volume_control "$chosen_action"
+            ;;
+        "$SET_TO_THIRTY")
+            wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.3
+            show_volume_control "$chosen_action"
+            ;;
+        "$SET_TO_FIFTY")
+            wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.5
+            show_volume_control "$chosen_action"
+            ;;
+    esac
+}
+
+toggle_mute() {
+    wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+    notify-send "Audio" "Mute toggled"
+
+    show_main_menu
+}
+
+show_main_menu() {
+    # Define menu options
+    OUTPUT_DEVICES="󰓃 Output Devices (Sinks)"
+    INPUT_DEVICES="󰍬 Input Devices (Sources)"
+    VOLUME_CONTROL=" Volume Control"
+    TOGGLE_MUTE="󰝟 Mute/Unmute"
+
+    OPTIONS="$OUTPUT_DEVICES\n$INPUT_DEVICES\n$VOLUME_CONTROL\n$TOGGLE_MUTE\n$EXIT"
+
+    # Open fuzzel menu, and read chosen option
+    chosen=$(echo -e "$OPTIONS" | $FUZZEL_COMMAND "Audio: ")
+
+    case "$chosen" in
+        "")
+            echo "No option chosen."
+            ;;
+        "$OUTPUT_DEVICES")
+            show_output_menu
+            ;;
+        "$INPUT_DEVICES")
+            show_input_menu
+            ;;
+        "$VOLUME_CONTROL")
+            show_volume_control
+            ;;
+        "$TOGGLE_MUTE")
+            toggle_mute
+            ;;
+        *)
+            echo "This is not a bug, it's a feature!"
+            ;;
+    esac
+}
+
+FUZZEL_COMMAND="fuzzel --dmenu $* -p"
+
+show_main_menu

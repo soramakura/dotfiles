@@ -1,0 +1,17 @@
+#!/bin/bash
+
+LOCK=" Lock"
+SUSPEND="󰤄 Suspend"
+LOGOUT="󰍃 Log Out"
+REBOOT="󰑓 Reboot"
+SHUTDOWN="󰐥 Power Off"
+
+SELECTION=$(printf "$LOCK\n$SUSPEND\n$LOGOUT\n$REBOOT\n$SHUTDOWN" | fuzzel --dmenu -p "Power: ")
+
+case "$SELECTION" in
+    "$LOCK") loginctl lock-session ;;
+    "$SUSPEND") systemctl suspend ;;
+    "$LOGOUT") niri msg action quit ;;
+    "$REBOOT") systemctl reboot ;;
+    "$SHUTDOWN") systemctl poweroff ;;
+esac
