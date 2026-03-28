@@ -1,13 +1,8 @@
 #!/bin/bash -xeu
 
-# Install niri with dms
-sudo dnf copr enable avengemedia/dms
-sudo dnf install niri dms
-systemctl --user add-wants niri.service dms
+sudo dnf install niri
 
 # Link the config files
 DOTFILES_DIR=$(readlink -f "$(dirname ${BASH_SOURCE[0]})/../../")
 
-echo $DOTFILES_DIR
-
-ln -snf ${DOTFILES_DIR}/config/niri ${HOME}/.config/niri
+ln -snf "${DOTFILES_DIR}/config/niri" "${HOME}/.config/"
