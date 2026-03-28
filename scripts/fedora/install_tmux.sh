@@ -3,6 +3,6 @@
 sudo dnf install -y tmux
 
 # Link the configuration files
-readonly DOTFILES_DIR=$(readlink -f "$(dirname ${BASH_SOURCE[0]})/../../")
+DOTFILES_DIR=$(readlink -f "$(dirname ${BASH_SOURCE[0]})/../../")
 
 ln -snf ${DOTFILES_DIR}/config/tmux ~/.config/

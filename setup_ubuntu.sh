@@ -1,7 +1,7 @@
 #!/bin/bash -ex
 
-readonly DOTFILES_REPO=https://github.com/soramakura/dotfiles.git
-readonly DOTFILES_DIR=$(readlink -f "$(dirname ${BASH_SOURCE[0]})")
+DOTFILES_REPO=https://github.com/soramakura/dotfiles.git
+DOTFILES_DIR=$(readlink -f "$(dirname ${BASH_SOURCE[0]})")
 
 cd ~
 echo $(pwd)

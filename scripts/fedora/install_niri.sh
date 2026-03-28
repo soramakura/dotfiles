@@ -6,7 +6,7 @@ sudo dnf install niri dms
 systemctl --user add-wants niri.service dms
 
 # Link the config files
-readonly DOTFILES_DIR=$(readlink -f "$(dirname ${BASH_SOURCE[0]})/../../")
+DOTFILES_DIR=$(readlink -f "$(dirname ${BASH_SOURCE[0]})/../../")
 
 echo $DOTFILES_DIR
 
