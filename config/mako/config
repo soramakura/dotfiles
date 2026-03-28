@@ -1,0 +1,20 @@
+max-history=99
+
+on-button-left=invoke-default-action
+on-button-middle=none
+on-button-right=dismiss
+on-touch=dismiss
+
+font="Noto Sans CJK JP"
+background-color=#1e1e2edd
+text-color=#cdd6f4ff
+width=300
+height=150
+border-size=2
+border-color=#89b4faff
+border-radius=8
+icons=1
+default-timeout=0
+
+[mode=hidden]
+invisible=1
