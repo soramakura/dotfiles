@@ -13,17 +13,15 @@ else
 fi
 cd dotfiles
 
-sudo dnf check-upgrade
-sudo dnf upgrade
+sudo dnf upgrade --refresh
 
-source ./scripts/fedora/cli/install_clitools.sh
-source ./scripts/fedora/cli/install_git.sh
-source ./scripts/fedora/cli/install_langc.sh
-source ./scripts/fedora/cli/install_rust.sh
-source ./scripts/fedora/cli/install_neovim.sh
-source ./scripts/fedora/cli/install_helix.sh
-source ./scripts/fedora/cli/install_tmux.sh
-source ./scripts/fedora/cli/link.sh
+source ./scripts/fedora/install_clitools.sh
+source ./scripts/fedora/install_git.sh
+source ./scripts/fedora/install_langc.sh
+source ./scripts/fedora/install_rust.sh
+source ./scripts/fedora/install_neovim.sh
+source ./scripts/fedora/install_helix.sh
+source ./scripts/fedora/install_tmux.sh
 
 if [ -d ~/.ssh ] && [ -f ~/.ssh/id_ed25519.pub ] ; then
     echo "id_ed25519.pub already exists"
