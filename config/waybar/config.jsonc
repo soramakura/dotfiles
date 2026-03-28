@@ -1,0 +1,184 @@
+// -*- mode: jsonc -*-
+{
+    "layer": "top",
+    "position": "top",
+    "spacing": 4,
+    "reload_style_on_change": true,
+    "gtk-layer-shell": false,
+
+    "modules-left": [
+        "custom/launcher",
+        "niri/workspaces",
+        "niri/window"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "tray",
+
+        "cpu",
+        "memory",
+        "temperature",
+
+        "idle_inhibitor",
+        "custom/clipboard",
+        "custom/notification",
+        "power-profiles-daemon",
+        "battery",
+        "custom/vpn",
+        "network",
+        "bluetooth",
+        "wireplumber",
+        "custom/power"
+    ],
+
+    "custom/launcher": {
+        "format": "",
+        "tooltip": false,
+
+        "on-click": "fuzzel"
+    },
+    "niri/window": {
+        "format": "{}",
+        "max-length": 80,
+        "icon": true,
+        "icon-size": 20
+    },
+
+    "clock": {
+        "interval": 10,
+        "format": "{:%H:%M ― %Y-%m-%d}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode"          : "month",
+            "on-scroll"     : 1,
+            "format": {
+                "months":     "<span color='#ffead3'><b>{}</b></span>",
+                "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+                "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+            }
+        },
+        "actions":  {
+            "on-click-right": "mode",
+            "on-scroll-up": "tz_up",
+            "on-scroll-down": "tz_down",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        }
+    },
+
+    "tray": {
+        "icon-size": 16,
+        "spacing": 10
+    },
+
+    "cpu": {
+        "format": " {usage}%"
+    },
+    "memory": {
+        "format": " {}%"
+    },
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": " ",
+            "deactivated": " "
+        }
+    },
+    "custom/clipboard": {
+        "format": "",
+        "tooltip": false,
+
+        "on-click": "cliphist list | fuzzel --dmenu -p 'Clipboard: ' | cliphist decode | wl-copy"
+    },
+    "custom/notification": {
+        "format": "",
+        "tooltip": false,
+        
+        "on-click": "swaync-client -t"
+    },
+    "power-profiles-daemon": {
+      "format": "{icon}",
+      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+      "tooltip": true,
+      "format-icons": {
+        "default": "",
+        "performance": "",
+        "balanced": "",
+        "power-saver": ""
+      }
+    },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-full": "{icon} {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-icons": ["", "", "", "", ""],
+        "bat-compatibility": true
+    },
+    "custom/vpn": {
+        "interval": 5,
+        "format": "󰳌",
+        "tooltip-format": "{}",
+        "exec": "nmcli connection show --active | grep -E '(tun|wg)-' | cut -d ' ' -f 1",
+    },
+    "network": {
+        "family": "ipv4_6",
+
+        "format-wifi": " ",
+        "format-ethernet": "󰈀",
+        "format-linked": "󱛅",
+        "format-disconnected": "󱚵",
+        "format-disabled": "󰖪",
+        "tooltip-format-ethernet": "{ifname}\n{ipaddr}",
+        "tooltip-format-wifi": "{ifname}\n{essid} ({signalStrength}%)\n{ipaddr}",
+        "tooltip-format-disconnected": "No interface is connected",
+        "tooltip-format-disabled": "The internet is disabled",
+
+        "on-click": "networkmanager_dmenu"
+    },
+    "network#vpn": {
+        "interface": "wg-*",
+        "format": "",
+        "format-vpn": "󰆧 VPN",
+        "tooltip-format": "{ifname} via {gwaddr}"
+    },
+    "bluetooth": {
+        "format-disabled": "󰂲",
+        "format-off": "󰂲",
+        "format-on": "󰂯",
+        "format-connected": "󰂱",
+
+        "tooltip-format-disabled": "󰂲 {status}",
+        "tooltip-format-off": "󰂲 {status}",
+        "tooltip-format-on": "󰂯 {device_alias} ({device_battery_percentage}) {status}",
+        "tooltip-format-connected": "󰂱",
+
+        "on-click": "rofi-bluetooth"
+    },
+    "wireplumber": {
+        "scroll-step": 2.0,
+        "format": "{icon} {volume}% {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": " {volume}%",
+        "format-source-muted": "",
+        "format-icons": [ "", "", "", "", "" ],
+
+        "on-click": "fuzzel_audio",
+        "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+    },
+    "custom/power": {
+        "format": "󰐥",
+        "tooltip": false,
+
+        "on-click": "fuzzel_power",
+    }
+}
