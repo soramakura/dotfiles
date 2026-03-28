@@ -1,0 +1,39 @@
+prefer-no-csd
+
+layout {
+    // When to center a column when changing focus, options are:
+    // - "never", default behavior, focusing an off-screen column will keep at the left
+    //   or right edge of the screen.
+    // - "always", the focused column will always be centered.
+    // - "on-overflow", focusing a column will center it if it doesn't fit
+    //   together with the previously focused column.
+    center-focused-column "never"
+
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+    }
+
+    // gaps 8
+
+    default-column-width { proportion 0.5; }
+    border {
+        off
+        // width 2
+    }
+    focus-ring {
+        // width 2
+    }
+    shadow {
+        softness 30
+        spread 5
+        offset x=0 y=5
+    }
+}
+
+layer-rule {
+    match namespace="^quickshell$"
+    place-within-backdrop true
+}
+
