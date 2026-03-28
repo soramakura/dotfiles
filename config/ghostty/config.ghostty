@@ -6,6 +6,9 @@ theme = "Builtin Tango Dark"
 background-opacity = 0.9
 background-opacity-cells=true
 background-blur-radius = 45 
+cursor-style = block
+cursor-style-blink = false
+shell-integration-features = no-cursor
 
 window-padding-x = 8
 window-padding-y = 8
