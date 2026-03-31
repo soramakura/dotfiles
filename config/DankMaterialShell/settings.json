@@ -212,7 +212,7 @@
   "iconTheme": "System Default",
   "cursorSettings": {
     "theme": "roa_cursors",
-    "size": 24,
+    "size": 32,
     "niri": {
       "hideWhenTyping": false,
       "hideAfterInactiveMs": 0
@@ -291,7 +291,7 @@
   "matugenTemplateKitty": true,
   "matugenTemplateFoot": true,
   "matugenTemplateAlacritty": true,
-  "matugenTemplateNeovim": true,
+  "matugenTemplateNeovim": false,
   "matugenTemplateWezterm": true,
   "matugenTemplateDgop": true,
   "matugenTemplateKcolorscheme": true,

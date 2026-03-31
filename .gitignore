@@ -1,6 +1,8 @@
 /config/nvim/lazy-lock.json
 /config/nvim/lua/plugins/dankcolors.lua
 
+/config/foot/dank-colors.ini
+
 /config/niri/config.kdl.backup*
 /config/niri/config.kdl.dmsbackup*
 /config/niri/dms/*
