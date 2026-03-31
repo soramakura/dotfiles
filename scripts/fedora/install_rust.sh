@@ -7,6 +7,7 @@ rustup component add rust-analyzer
 rustup component add rustfmt
 
 # For updating apps installed by cargo
+sudo dnf install openssl-devel
 cargo install cargo-update
 
 # For cleaning cargo cache
