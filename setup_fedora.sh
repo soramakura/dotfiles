@@ -15,6 +15,8 @@ cd dotfiles
 
 sudo dnf upgrade --refresh
 
+mkdir -p ${HOME}/.config
+
 source ./scripts/fedora/install_clitools.sh
 source ./scripts/fedora/install_git.sh
 source ./scripts/fedora/install_langc.sh
