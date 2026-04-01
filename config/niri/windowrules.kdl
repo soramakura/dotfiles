@@ -9,3 +9,8 @@ window-rule {
     default-column-width { fixed 416; }
     default-window-height { fixed 234; }
 }
+
+window-rule {
+    match app-id="thunar" title="Rename *"
+    open-floating true
+}
