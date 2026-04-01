@@ -14,5 +14,11 @@ sudo dnf install dms qt6ct-kde qt5ct nautilus
 systemctl --user enable pipewire pipewire-pulse wireplumber
 systemctl --user add-wants niri.service dms
 
+echo 'export QT_QPA_PLATFORMTHEME="qt5ct"' >> ${HOME}/.bash_profile
+echo 'export GTK_THEME="Adwaita:dark"' >> ${HOME}/.bash_profile
+echo 'export XDG_DATA_DIR="/usr/local/share:/usr/share"' >> ${HOME}/.bash_profile
+echo 'export XCURSOR_THEME=' >> ${HOME}/.bash_profile
+echo 'export XCURSOR_SIZE=24' >> ${HOME}/.bash_profile
+
 # Link the config files
 ln -snf ${DOTFILES_DIR}/config/DankMaterialShell ${HOME}/.config/
