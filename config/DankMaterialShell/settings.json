@@ -82,7 +82,8 @@
     {
       "id": "brightnessSlider",
       "enabled": true,
-      "width": 50
+      "width": 50,
+      "deviceName": "leds:igc-0400-led1"
     },
     {
       "id": "wifi",
@@ -212,7 +213,7 @@
   "iconTheme": "System Default",
   "cursorSettings": {
     "theme": "roa_cursors",
-    "size": 32,
+    "size": 24,
     "niri": {
       "hideWhenTyping": false,
       "hideAfterInactiveMs": 0
