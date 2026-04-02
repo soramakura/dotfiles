@@ -10,4 +10,10 @@ sudo dnf swap ffmpeg-free ffmpeg --allowerasing
 sudo dnf config-manager setopt fedora-cisco-openh264.enabled=1
 
 # libva
-sudo dnf install libva-utils libva-nvidia-driver
+sudo dnf install libva-utils
+
+# libavcodec
+sudo dnf install libavcodec-freeworld
+
+# vulkan-tools
+sudo dnf install vulkan-tools
