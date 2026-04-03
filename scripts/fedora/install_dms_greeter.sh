@@ -10,3 +10,6 @@ dms greeter install
 
 dms greeter enable
 dms greeter sync
+
+sudo dnf install plymouth plymouth-system-theme plymouth-theme-spinner
+sudo plymouth-set-default-theme spinner -R
