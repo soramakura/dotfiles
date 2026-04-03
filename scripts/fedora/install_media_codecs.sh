@@ -17,3 +17,6 @@ sudo dnf install libavcodec-freeworld
 
 # vulkan-tools
 sudo dnf install vulkan-tools
+
+# alsa-utils
+sudo dnf install alsa-utils
