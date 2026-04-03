@@ -19,4 +19,6 @@ sudo dnf install libavcodec-freeworld
 sudo dnf install vulkan-tools
 
 # alsa-utils
-sudo dnf install alsa-utils
+sudo dnf install pipewire wireplumber pipewire-pulseaudio pipewire-alsa pipewire-utils alsa-utils
+
+systemctl --user enable --now pipewire.service pipewire-pulse.service wireplumber.service
