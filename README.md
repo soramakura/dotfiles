@@ -21,7 +21,7 @@ function __parse_git_branch() {
     local branch
     branch=$(git symbolic-ref --short HEAD 2>/dev/null || git rev-parse --short HEAD 2>/dev/null)
     if [ -n "$branch" ]; then
-        echo -e "\e[0m*\e[95m$branch\e[0m "
+        echo -e "\001\e[0m\002*\001\e[95m\002$branch\001\e[0m\002 "
     fi
 }
 export PS1="\[\e[0;92m\]\u\[\e[0m\]@\[\e[0;32m\]\h\[\e[0m\]:\[\e[0;96m\]\w \$(__parse_git_branch)\[\e[92m\]\$ \[\e[0m\]"
