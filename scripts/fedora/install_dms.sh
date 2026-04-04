@@ -10,7 +10,7 @@ source "${DOTFILES_DIR}/scripts/fedora/install_fonts.sh"
 source "${DOTFILES_DIR}/scripts/fedora/install_media_codec.sh"
 
 sudo dnf copr enable avengemedia/dms
-sudo dnf install dms qt6ct-kde qt5ct nautilus
+sudo dnf install dms qt6ct-kde qt5ct nautilus wtype
 
 systemctl --user add-wants niri.service dms
 
