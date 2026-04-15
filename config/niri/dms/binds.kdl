@@ -132,6 +132,6 @@ binds {
     Mod+T hotkey-overlay-title="Open Terminal" { spawn "foot"; }
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
     Mod+Shift+Slash { show-hotkey-overlay; }
-    Mod+G repeat=false { toggle-overview; }
+    Mod+O repeat=false { toggle-overview; }
     Mod+Tab repeat=false { toggle-overview; }
 }
