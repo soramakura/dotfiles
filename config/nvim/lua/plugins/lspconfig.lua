@@ -75,7 +75,7 @@ return {
   },
   {
     "williamboman/mason-lspconfig.nvim",
-    event = { "FileType" },
+    event = { "VeryLazy" },
     cmd = {
       "LspInstall",
       "LspUninstall",
@@ -94,18 +94,20 @@ return {
       },
     },
     config = function(_, opts)
-      local capabilities = require("cmp_nvim_lsp").default_capabilities(
-        vim.lsp.protocol.make_client_capabilities()
-      )
-      vim.lsp.config("*", {
-        capabilities = capabilities,
-      })
+      vim.schedule(function()
+        local capabilities = require("cmp_nvim_lsp").default_capabilities(
+          vim.lsp.protocol.make_client_capabilities()
+        )
+        vim.lsp.config("*", {
+          capabilities = capabilities,
+        })
 
-      for lsp_name, conf in pairs(lsp_config_table) do
-        vim.lsp.config(lsp_name, conf)
-      end
+        for lsp_name, conf in pairs(lsp_config_table) do
+          vim.lsp.config(lsp_name, conf)
+        end
 
-      require("mason-lspconfig").setup(opts)
+        require("mason-lspconfig").setup(opts)
+      end)
     end
   },
 }
