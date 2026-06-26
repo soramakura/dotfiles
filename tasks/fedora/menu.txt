@@ -1,0 +1,115 @@
+Available recipes:
+    help
+
+    [c]
+    c-development
+    clang
+
+    [cli-tools]
+    bat
+    btop
+    fastfetch
+    fd-find
+    fzf
+    nmtui
+    ps_mem
+    ripgrep
+    yt-dlp
+
+    [container]
+    distrobox
+    podman
+
+    [credential-manager]
+    gnome-keyring
+    keepassxc
+
+    [editor]
+    helix
+    neovim
+
+    [file-browser]
+    nautilus
+    thunar
+
+    [file-sync]
+    syncthing
+
+    [fonts]
+    fontconfig
+    hackgen
+    noto
+    twemoji
+
+    [for-config]
+    crudini
+    xdg-user-dirs
+
+    [git]
+    git
+    github-cli
+    lazygit
+
+    [ime]
+    fcitx5
+
+    [multimedia-apps]
+    alsamixer
+    imv
+    mpv
+    strawberry
+    wiremix
+
+    [multimedia-runtime]
+    alsa-utils
+    ffmpeg
+    libavcodec
+    libva-utils
+    pipewire
+    vulkan-tools
+
+    [multiplexer]
+    tmux
+
+    [nvidia]
+    nvidia_driver
+
+    [power-profiles]
+    power-profiles-daemon
+
+    [rust]
+    rust
+    rust-cache
+    rust-deps
+    rust-license
+    rust-update
+    rust_fullset
+
+    [screen]
+    brightnessctl
+    ddcutil
+    i2c-tools
+
+    [terminal]
+    foot
+    ghostty
+
+    [web-browser]
+    vivaldi_native
+
+    [wm]
+    dms
+    dms_greeter
+    greetd
+    niri
+    xdg-desktop-portal
+
+    [zig]
+    zig
+Available recipes:
+    enable-rpm-fusion
+    help
+    my-dnf-config
+Available recipes:
+    enable_ipv6_temp_addr
+    enable_privacy_dns
