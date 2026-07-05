@@ -20,46 +20,50 @@ end
 
 local lsp_progress_hook = function()
   ---@type table<number, {token:lsp.ProgressToken, msg:string, done:boolean}[]>
-  local progress = vim.defaulttable()
+  local progress_store = vim.defaulttable()
+
   vim.api.nvim_create_autocmd("LspProgress", {
     ---@param ev {data: {client_id: integer, params: lsp.ProgressParams}}
     callback = function(ev)
       local client = vim.lsp.get_client_by_id(ev.data.client_id)
-      local value = ev.data.params
-          .value --[[@as {percentage?: number, title?: string, message?: string, kind: "begin" | "report" | "end"}]]
-      if not client or type(value) ~= "table" then
-        return
-      end
-      local p = progress[client.id]
+      if not client then return end
 
-      for i = 1, #p + 1 do
-        if i == #p + 1 or p[i].token == ev.data.params.token then
-          p[i] = {
-            token = ev.data.params.token,
-            msg = ("[%3d%%] %s%s"):format(
-              value.kind == "end" and 100 or value.percentage or 100,
-              value.title or "",
-              value.message and (" **%s**"):format(value.message) or ""
-            ),
-            done = value.kind == "end",
+      local progress_params = ev.data.params
+      local work_progress = progress_params
+          .value --[[@as {percentage?: number, title?: string, message?: string, kind: "begin" | "report" | "end"}]]
+      if type(work_progress) ~= "table" then return end
+
+      local active_tasks = progress_store[client.id]
+      for i = 1, #active_tasks + 1 do
+        if i == #active_tasks + 1 or active_tasks[i].token == progress_params.token then
+          local percentage = (work_progress.kind == "end") and 100 or (work_progress.percentage or 100)
+          local detail = work_progress.message and (" **%s**"):format(work_progress.message) or ""
+
+          active_tasks[i] = {
+            token = progress_params.token,
+            msg = ("[%3d%%] %s%s"):format(percentage, work_progress.title or "", detail),
+            done = (work_progress.kind == "end"),
           }
           break
         end
       end
 
-      local msg = {} ---@type string[]
-      progress[client.id] = vim.tbl_filter(function(v)
-        return table.insert(msg, v.msg) or not v.done
-      end, p)
+      ---@type string[]
+      local displayed_msgs = {}
+      progress_store[client.id] = vim.tbl_filter(function(task)
+        table.insert(displayed_msgs, task.msg)
+        return not task.done
+      end, active_tasks)
 
-      local spinner = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" }
-      vim.notify(table.concat(msg, "\n"), vim.log.levels.INFO, {
+      -- local mode = vim.api.nvim_get_mode().mode
+      -- if (mode == "i" or mode == "R") then
+      --   return
+      -- end
+
+      vim.notify(table.concat(displayed_msgs, "\n"), vim.log.levels.INFO, {
         id = "lsp_progress",
         title = client.name,
-        opts = function(notif)
-          notif.icon = #progress[client.id] == 0 and " "
-              or spinner[math.floor(vim.uv.hrtime() / (1e6 * 80)) % #spinner + 1]
-        end,
+        icon = (#progress_store[client.id] == 0) and " " or "󰔟"
       })
     end,
   })
@@ -111,7 +115,7 @@ return {
     { "<leader>gI", function() Snacks.picker.gh_issue({ state = "all" }) end, desc = "Searchall  github issues" },
     { "<leader>gp", function() Snacks.picker.gh_pr() end,                     desc = "Search github pull requests (open)" },
     { "<leader>gP", function() Snacks.picker.gh_pr({ state = "all" }) end,    desc = "Search all github pull requests" },
-    { "<leader>sM", function() Snacks.picker.man() end,                              desc = "Search man pages" },
+    { "<leader>sM", function() Snacks.picker.man() end,                       desc = "Search man pages" },
 
     { "gD",         function() Snacks.picker.lsp_declarations() end,          desc = "Go to declaration" },
     { "gd",         function() Snacks.picker.lsp_definitions() end,           desc = "Go to definition" },
