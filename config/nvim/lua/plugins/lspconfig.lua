@@ -1,3 +1,4 @@
+---@type vim.lsp.Config
 local lsp_config_table = {
   ["lua_ls"] = {
     settings = {
@@ -16,6 +17,19 @@ local lsp_config_table = {
           command = "clippy",
         },
       },
+    },
+  },
+
+  ["zls"] = {
+    handlers = { ["$/progress"] = function(err, result, ctx, config)
+        if result and result.token and type(result.token) == "string" then
+          if (result.token == "buildProgressToken") then
+            return
+          end
+        end
+
+        vim.lsp.handlers["$/progress"](err, result, ctx, config)
+      end,
     },
   },
 }
