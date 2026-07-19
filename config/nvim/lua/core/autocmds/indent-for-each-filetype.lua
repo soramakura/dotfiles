@@ -20,6 +20,7 @@ M.indent_for_each_filetype = {
   svelte = 2,
   toml = 2,
   typescript = 2,
+  typst = 2,
   yaml = 2,
 }
 
