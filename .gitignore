@@ -9,3 +9,4 @@
 !/config/niri/dms/binds.kdl
 
 /config/DankMaterialShell/plugins/*
+/config/DankMaterialShell/.changelog-*
