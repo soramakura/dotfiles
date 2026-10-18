@@ -8,6 +8,7 @@ source "${DOTFILES_DIR}/scripts/fedora/install_power_profiles.sh"
 source "${DOTFILES_DIR}/scripts/fedora/install_foot.sh"
 source "${DOTFILES_DIR}/scripts/fedora/install_fonts.sh"
 source "${DOTFILES_DIR}/scripts/fedora/install_media_codec.sh"
+source "${DOTFILES_DIR}/scripts/fedora/enable_flatpak.sh"
 
 sudo dnf copr enable avengemedia/dms
 sudo dnf install dms qt6ct-kde qt5ct nautilus wtype
