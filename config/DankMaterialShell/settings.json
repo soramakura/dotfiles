@@ -71,6 +71,8 @@
   "appIdSubstitutions": [],
   "clockDateFormat": "yyyy-MM-dd",
   "lockDateFormat": "yyyy-MM-dd",
+  "greeterShowWeather": false,
+  "greeterWallpaperPath": "/home/soramakura/Pictures/wallpaper.jpg",
   "weatherEnabled": false,
   "networkPreference": "wifi",
   "cursorSettings": {
@@ -255,5 +257,5 @@
       "trigger": "qrg"
     }
   },
-  "configVersion": 17
+  "configVersion": 18
 }
