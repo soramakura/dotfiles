@@ -223,13 +223,16 @@
         {
           "id": "focusedWindow",
           "enabled": true,
-          "focusedWindowSize": 1
+          "focusedWindowSize": 1,
+          "focusedWindowCompactMode": false
         }
       ],
       "centerWidgets": [
         {
           "id": "clock",
-          "enabled": true
+          "enabled": true,
+          "clockCompactMode": false,
+          "clockDateOrder": "timeFirst"
         }
       ],
       "rightWidgets": [
@@ -376,7 +379,7 @@
       "showTrash": false,
       "trashFileManager": "default",
       "trashCustomCommand": "",
-      "magnification": false,
+      "magnification": true,
       "magnificationScale": 130,
       "magnificationProfile": "parabolic",
       "magnificationExpand": false,
@@ -727,5 +730,11 @@
   "dashTabsEvenlySpaced": true,
   "lockScreenFontFamily": "Noto Sans CJK JP",
   "lockScreenShowPowerActions": false,
-  "lockScreenShowWeather": false
+  "lockScreenShowWeather": false,
+  "notificationCompactMode": true,
+  "notificationSummaryFontSize": 14,
+  "notificationBodyFontSize": 12,
+  "powerMenuGridLayout": false,
+  "batteryNotifyChargeLimit": false,
+  "animationDuration": 250
 }
