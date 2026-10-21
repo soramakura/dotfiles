@@ -1,0 +1,9 @@
+{
+  "lockfileVersion": 1,
+  "plugins": {
+    "emojiLauncher": {
+      "repo": "https://github.com/devnullvoid/dms-emoji-launcher",
+      "commit": "18974e94d048ecedfa1c0acea76e21584b05196d"
+    }
+  }
+}

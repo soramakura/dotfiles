@@ -1,6 +1,6 @@
 {
   "emojiLauncher": {
-    "enabled": false,
+    "enabled": true,
     "pasteOnSelect": true,
     "recentEmojis": "👏,🎧,🎤,🎶,🎵"
   }
