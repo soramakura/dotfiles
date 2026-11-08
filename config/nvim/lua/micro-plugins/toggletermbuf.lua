@@ -144,7 +144,7 @@ local function setup_command()
 end
 
 local function setup_autocmd()
-  local group_id = vim.api.nvim_create_augroup("soramakura::config::core::clear-registers", { clear = true })
+  local group_id = vim.api.nvim_create_augroup("micro-plugins::toggletermbuf", { clear = true })
   vim.api.nvim_create_autocmd("VimResized", {
     group = group_id,
     callback = function()

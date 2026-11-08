@@ -1,4 +1,4 @@
---- @module "indent-for-each-filetype"
+--- @module "filetype-indent"
 local M = {}
 
 M.default_indent_width = 4
@@ -12,7 +12,7 @@ M.indent_for_each_filetype = {
   go = "<Tab>",
   html = 2,
   json = 2,
-  javascirpt = 2,
+  javascript = 2,
   lua = 2,
   make = "<Tab>",
   markdown = 2,
@@ -46,7 +46,7 @@ local function set_indent_style_by_filetype(filetype)
 end
 
 local function setup_autocmds()
-  local group_id = vim.api.nvim_create_augroup("soramakura::config::core::indent", { clear = true })
+  local group_id = vim.api.nvim_create_augroup("micro-plugins::filetype-indent", { clear = true })
   vim.api.nvim_create_autocmd("FileType", {
     group = group_id,
     callback = function(args)
