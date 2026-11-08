@@ -8,5 +8,5 @@
 /config/niri/dms/*
 !/config/niri/dms/binds.kdl
 
-/config/DankMaterialShell/plugins/*
-/config/DankMaterialShell/.changelog-*
+/config/dms/plugins/*
+/config/dms/.changelog-*
