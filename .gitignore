@@ -10,3 +10,5 @@
 
 /config/dms/plugins/*
 /config/dms/.changelog-*
+
+/config/fcitx5/conf/cached_layouts
